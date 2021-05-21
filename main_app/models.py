@@ -28,7 +28,11 @@ class Dog(models.Model):
             choices=SIZES,
             default=SIZES[0][0]
     )
-    gender = models.CharField()
+    gender = models.CharField(
+        max_length=1,
+            choices=GENDERS,
+            default=GENDERS[2][0]
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = CharField(max_length=250)
 
