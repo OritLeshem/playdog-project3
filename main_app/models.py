@@ -3,7 +3,8 @@ from django.db.models.fields import CharField
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
-from django.contrib.gis.db import models
+# for possible use of PointField
+#from django.contrib.gis.db import models
 
 GENDERS = (
     ('M', 'MALE'),
@@ -26,12 +27,12 @@ class Dog(models.Model):
     size = models.CharField(
         max_length=1,
             choices=SIZES,
-            default=SIZES[0][0]
+            default=SIZES[2][0]
     )
     gender = models.CharField(
         max_length=1,
             choices=GENDERS,
-            default=GENDERS[2][0]
+            default=GENDERS[0][0]
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = CharField(max_length=250)
@@ -47,7 +48,7 @@ class Event(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField('Event date')
     description = models.TextField(max_length=250)
-    location = models.PointField()
+    location = models.FloatField()
     attendees = models.ManyToManyField(Dog)
     
     def __str__(self):
