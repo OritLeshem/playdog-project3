@@ -1,0 +1,15 @@
+
+<h1>Dog List</h1>
+
+
+
+{% for dog in dogs %}
+<a href="/dogs/{{ dog.id }}">    
+        <p>name: {{ dog.name }}</p>
+</a>
+        <p>Breed: {{ dog.breed }}</p>
+        <p>Description: {{ dog.description }}</p>
+        
+      
+{% endfor %}
+
