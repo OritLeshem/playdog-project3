@@ -25,7 +25,8 @@ class Dog(models.Model):
     age = models.IntegerField()
     size = models.CharField(
         max_length=1,
-            choices=SIZES
+            choices=SIZES,
+            default=SIZES[0][0]
     )
     gender = models.CharField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
