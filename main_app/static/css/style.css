@@ -19,7 +19,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   body {
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(160, 160, 160);
   }
 
   #i-1,
@@ -116,5 +116,9 @@ body {
   .logo-div {
     text-align: center;
     padding-top: 0.5rem;
+  }
+
+  :focus {
+    -webkit-tap-highlight-color: transparent;
   }
 }
