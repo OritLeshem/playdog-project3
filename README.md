@@ -1,7 +1,4 @@
-PLAYDOG app was invented to help dog's owners to create play dates for thier dogs, and enjoy  time togheter.
-
-We dealt with three tables in our database:  Users, Dogs and Events.
-and allow the users to see all dogs, all events, and attandence of dogs of each event.
+PLAYDOG app was invented to help dog's owners to create play dates for thier dogs, and enjoy time togheter.
 
 
 after registred as a user, you can add dog(s).
@@ -13,7 +10,11 @@ the viewsite is either with a list of events or map marked with all events.
  
 Screenshot: 
 
-Technologies Used: Psql, Django, Python, Js, CSS, HTML
+Technologies Used:
+Psql, Django, Python, Js, CSS, HTML
+We dealt with three tables in our database:  Users, Dogs and Events.
+the app allow the users to see all dogs, all events, and attandence of dogs in each event. create an event or join existing event.
+
 
 Getting Started:
 Heroku link:
