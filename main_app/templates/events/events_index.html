@@ -1,0 +1,14 @@
+
+<h1>event List</h1>
+
+
+
+{% for event in events %}
+<a href="/events/{{ event.id }}">    
+        <p>name: {{ event.name }}</p>
+</a>
+        
+        <p>Description: {{ event.description }}</p>
+        
+      
+{% endfor %}
