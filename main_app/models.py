@@ -34,7 +34,7 @@ class Dog(models.Model):
             choices=GENDERS,
             default=GENDERS[0][0]
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = CharField(max_length=250)
 
     def __str__(self):

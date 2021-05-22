@@ -5,7 +5,8 @@
         <p>Breed: {{ dog.breed }}</p>
         <p>Description: {{ dog.description }}</p>
         
-        
+        <a href="{% url 'dogs_update' dog.id %}">Edit</a>
+        <a href="{% url 'dogs_delete' dog.id %}">Delete</a>       
       
       
  
