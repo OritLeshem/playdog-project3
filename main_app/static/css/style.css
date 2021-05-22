@@ -1,0 +1,105 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: rgb(150, 150, 150);
+  }
+
+  #i-1,
+  #txt-1 {
+    color: black;
+  }
+
+  #i-2,
+  #txt-2 {
+    color: rgba(131, 129, 129, 0.815);
+  }
+
+  #i-3,
+  #txt-3 {
+    color: rgba(131, 129, 129, 0.815);
+  }
+
+  h1#play-dog {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 2.3rem;
+    padding-left: 1rem;
+    font-weight: lighter;
+    margin-top: 0.5rem;
+    color: chocolate;
+    text-shadow: -1px 2px 0px #00e6e6, -2px 4px 0px #01cccc,
+      -3px 6px 0px #00bdbd;
+    letter-spacing: 1.5px;
+  }
+
+  nav > div:last-child {
+    margin-left: auto;
+    padding-right: 1rem;
+  }
+
+  .nav {
+    border-bottom: 0.5px solid rgba(184, 184, 184, 0.349);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+  }
+  .flex-foot {
+    position: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    bottom: 2.5%;
+    left: 0;
+    width: 100%;
+    border-top: 0.5px solid rgba(184, 184, 184, 0.582);
+    background-color: rgb(253, 253, 253);
+  }
+
+  .flex-foot-text {
+    position: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(253, 253, 253);
+    font-size: 0.9rem;
+    font-family: "Pattaya", sans-serif;
+    color: rgb(131, 129, 129, 0.815);
+  }
+  i.fa {
+    font-size: 2rem;
+    padding-top: 0.2rem;
+  }
+
+  .btn-home {
+    text-decoration: none;
+    border: 1px solid black;
+    background-color: black;
+    padding: 0.3rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    border-radius: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9rem;
+    color: white;
+  }
+}
