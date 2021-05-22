@@ -1,6 +1,17 @@
+{% if user.is_authenticated %}
+<a href="{% url 'dogs_index' %}">View All dogs</a>
+<a href="{% url 'dogs_create'%}">Add a dog</a>
+<a href="{% url 'events_index'%}">View All event</a>
+<a href="{% url 'events_create'%}">Add an event</a>
+<a href="{% url 'logout' %}">welcome {{user.username}} ,Log Out</a>
+{% else %}
+<a href="{% url 'signup' %}">Sign Up</a>
+<a href="{% url 'login' %}">Log In</a>
+  {% endif %}
 
-<a href="{% url 'index' %}">View All dogs</a>
 
-<h1>HI GUYS</h1>
+
+
+<h1>include crud dog</h1>
 <hr />
 
