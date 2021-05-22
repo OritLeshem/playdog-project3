@@ -15,9 +15,11 @@
 <body>
 
     <nav class='nav'>
-        <h1 id='play-dog'>Play Dog</h1>
-        <div><i class="fa fa-plus-square-o"></i></div>
+        <div id='play-dog'>Play Dog</div>
+        <div><a href='#'><i class="fa fa-plus-square-o"></i></a></div>
     </nav>
+    <div class='logo-div'><img id ='img' src="{% static 'img/logo.png' %}"></div>
+
 
     <main class='container'>
         {% block content %}
@@ -37,41 +39,41 @@
 
     <!--JS FOR FOOTER BTN COLOR CHANGES-->
 
-<script>
-    let i = document.getElementById('i-1')
-    let txt = document.getElementById('txt-1')
-    let i2 = document.getElementById('i-2')
-    let txt2 = document.getElementById('txt-2')
-    let i3 = document.getElementById('i-3')
-    let txt3 = document.getElementById('txt-3')
+    <script>
+        let i = document.getElementById('i-1')
+        let txt = document.getElementById('txt-1')
+        let i2 = document.getElementById('i-2')
+        let txt2 = document.getElementById('txt-2')
+        let i3 = document.getElementById('i-3')
+        let txt3 = document.getElementById('txt-3')
 
-    i.addEventListener('click', (e) =>{
-        i.style.color = 'black';
-        txt.style.color = 'black';
-        i2.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt2.style.color = 'rgba(131, 129, 129, 0.815)';
-        i3.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt3.style.color = 'rgba(131, 129, 129, 0.815)';
-    })
+        i.addEventListener('click', (e) => {
+            i.style.color = 'black';
+            txt.style.color = 'black';
+            i2.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt2.style.color = 'rgba(131, 129, 129, 0.815)';
+            i3.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt3.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
 
-    i2.addEventListener('click', (e) =>{
-        i2.style.color = 'black';
-        txt2.style.color = 'black';
-        i.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt.style.color = 'rgba(131, 129, 129, 0.815)';
-        i3.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt3.style.color = 'rgba(131, 129, 129, 0.815)';
-    })
+        i2.addEventListener('click', (e) => {
+            i2.style.color = 'black';
+            txt2.style.color = 'black';
+            i.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt.style.color = 'rgba(131, 129, 129, 0.815)';
+            i3.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt3.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
 
-    i3.addEventListener('click', (e) =>{
-        i3.style.color = 'black';
-        txt3.style.color = 'black';
-        i.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt.style.color = 'rgba(131, 129, 129, 0.815)';
-        i2.style.color = 'rgba(131, 129, 129, 0.815)';
-        txt2.style.color = 'rgba(131, 129, 129, 0.815)';
-    })
+        i3.addEventListener('click', (e) => {
+            i3.style.color = 'black';
+            txt3.style.color = 'black';
+            i.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt.style.color = 'rgba(131, 129, 129, 0.815)';
+            i2.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt2.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
+    </script>
 
-</script>
 </body>
 </html>
