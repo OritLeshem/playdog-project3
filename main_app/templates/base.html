@@ -10,32 +10,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
     <title>Play Dog</title>
 </head>
 <body>
 
     <nav class='nav'>
         <div id='play-dog'>Play Dog</div>
-        <div><a href='#'><i class="fa fa-plus-square-o"></i></a></div>
+        <div><a href="{% url 'events_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
     </nav>
-    <div class='logo-div'><img id ='img' src="{% static 'img/logo.png' %}"></div>
+    
 
 
     <main class='container'>
         {% block content %}
         {% endblock %}
     </main> 
-
+    {% if user.is_authenticated %}
     <footer class='flex-foot'>
-        <div><a id='i-1' href='#'><i class="fa fa-home"></i></a></div>
-        <div><a id='i-2' href='#'><i class="fa fa-sign-in"></i></a></div>
-        <div><a id='i-3' href='#'><i class="fa fa-paw"></i></a></div>
+        <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
+        <div><a id='i-2' href="{% url 'logout' %}"><i class="fa fa-sign-in"></i></a></div>
+        <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
     </footer> 
     <footer class='flex-foot-text'>
-        <div id='txt-1'>Home</div>
-        <div id='txt-2'>Login</div>
-        <div id='txt-3'>Dogs</div>        
-    </footer> 
+        <div id='txt-1'>Home</div>     
+        <div id='txt-2'>Logout</div>
+        <div id='txt-3'>Dogs</div>
+    </footer>
+        {%else%}   
+        <footer class='flex-foot'>
+            <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
+            <div><a id='i-2' href="{% url 'login' %}"><i class="fa fa-sign-in"></i></a></div>
+            <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
+        </footer> 
+        <footer class='flex-foot-text'>
+            <div id='txt-1'>Home</div>     
+            <div id='txt-2'>Login</div>
+            <div id='txt-3'>Dogs</div>
+        </footer>
+        {%endif%}     
+ 
 
     <!--JS FOR FOOTER BTN COLOR CHANGES-->
 

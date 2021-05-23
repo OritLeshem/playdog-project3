@@ -1,14 +1,20 @@
 
-<h1>event List</h1>
+{% extends 'base.html' %}
+{% block content %}
 
 
 
 {% for event in events %}
-<a href="/events/{{ event.id }}">    
-        <p>name: {{ event.name }}</p>
-</a>
-        
-        <p>Description: {{ event.description }}</p>
-        
+<a href="{% url 'events_detail' event.id %}">
+        <div class='card-container'>
+        <div id='card-name'> {{ event.name }}</div>
+        <div class='card-img'><img src="https://www.hillspet.com/content/dam/cp-sites/hills/hills-pet/en_us/exported/dog-care/play-exercise/images/two-dogs-playing-tug-of-war-with-disc.jpg"></div>
+        <div id='card-date'> {{ event.date }}</div>
+        <div id='card-loc'> {{ event.location }}</div>
+        <div id='card-desc'> {{ event.description }}</div>
+</div>
+</a>       
       
 {% endfor %}
+
+{% endblock %}
