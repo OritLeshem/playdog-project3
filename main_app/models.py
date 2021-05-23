@@ -36,7 +36,7 @@ class Dog(models.Model):
         default=GENDERS[0][0]
     )
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = CharField(max_length=250)
+    image = models.ImageField(blank=True, null=True, upload_to='images/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -44,6 +44,9 @@ class Dog(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'dog_id': self.id})
+
+    class Meta:
+        ordering = ['name']
 
 
 class Event(models.Model):
@@ -56,3 +59,6 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['date']

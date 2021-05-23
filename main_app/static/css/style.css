@@ -19,7 +19,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   body {
-    background-color: rgba(228, 228, 228, 0.863);
+    background-color: rgba(255, 255, 255, 0.863);
   }
 
   #i-1,
@@ -55,8 +55,8 @@ body {
   }
 
   .nav {
-    border-bottom: 0.5px solid rgba(184, 184, 184, 0.349);
-    background-color: rgb(255, 255, 255);
+    border-bottom: 0.5px solid transparent;
+    background-color: rgb(248, 247, 247);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,6 +224,7 @@ body {
   .form-field {
     height: 100vh;
     background-color: white;
+    position: relative;
   }
 
   #logo {
@@ -246,5 +247,45 @@ body {
   }
   textarea {
     resize: none;
+  }
+
+  #name {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+  }
+  #age {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+  }
+  #breed {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: rgb(122, 122, 122);
+    margin-bottom: 1rem;
+  }
+
+  #dog-pic {
+    margin-top: 0.8rem;
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #dog-p {
+    font-family: "Montserrat", sans-serif;
+    margin-left: 1rem;
+    font-weight: 900;
+  }
+  hr {
+    width: 50vw;
+    margin: auto;
+    opacity: 0.2;
   }
 }

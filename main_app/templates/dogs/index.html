@@ -1,15 +1,24 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
 
-<h1>Dog List</h1>
+<div class='form-field'>
+<div><h1 class='form-h1'>Play Dogs</h1></div> 
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
 
 
 
 {% for dog in dogs %}
-<a href="/dogs/{{ dog.id }}">    
-        <p>name: {{ dog.name }}</p>
-</a>
-        <p>Breed: {{ dog.breed }}</p>
-        <p>Description: {{ dog.description }}</p>
+<a href="{% url 'detail' dog.id %}"><img id='dog-pic' src="{{ dog.image.url }}"></a>
+        <p id='name'> {{ dog.name }}</p>
+        <p id='age'> {{ dog.age }} years old</p>
+        <p id='breed'>{{ dog.breed }}</p>
         
-      
+        <hr> 
 {% endfor %}
+</div>
+
+
+{% endblock %}
+
 

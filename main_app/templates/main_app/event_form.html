@@ -6,8 +6,9 @@
 <div class='form-field'>
 {% if object %}
 <div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
     {% else %}
-  <div><h1 class='form-h1'>Play Dog Events</h1></div> 
+  <div><h1 class='form-h1'>Create Event</h1></div> 
   <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
     {% endif %}
   <form action="" method="post" enctype="multipart/form-data">
@@ -26,7 +27,7 @@
   <script>
     $( function() {
       $( "#datepicker" ).datepicker();
-    } );
+      } );
   </script>
-  
+
   {% endblock %}
