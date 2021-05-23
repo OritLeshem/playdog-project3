@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block content %}
 
@@ -8,7 +7,7 @@
 <a href="{% url 'events_detail' event.id %}">
         <div class='card-container'>
         <div id='card-name'> {{ event.name }}</div>
-        <div class='card-img'><img src="https://www.hillspet.com/content/dam/cp-sites/hills/hills-pet/en_us/exported/dog-care/play-exercise/images/two-dogs-playing-tug-of-war-with-disc.jpg"></div>
+        <div class='card-img'><img src="{{ event.image.url }}"></div>
         <div id='card-date'> {{ event.date }}</div>
         <div id='card-loc'> {{ event.location }}</div>
         <div id='card-desc'> {{ event.description }}</div>

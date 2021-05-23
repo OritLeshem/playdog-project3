@@ -1,12 +1,25 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% load widget_tweaks %}
+
 {% if object %}
-    <h1>Edit {{object.name}}</h1>
+<div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
     {% else %}
-    <h1>Add Event</h1>
+
+  <div><h1 class='form-h1'>Add A Play Dog Event</h1></div> 
     {% endif %}
-  <form action="" method="post">
+
+  <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
+    <div class='form-field'>
+<div>   {% render_field form.name class='input' placeholder='Enter a name' %}</div> 
+<div>   {% render_field form.description rows='6' class='input' placeholder='Enter a description' %}</div> 
+<div>    {% render_field form.date class='input' placeholder='Enter a date' %}</div> 
+<div>  {% render_field form.location class='input' placeholder='Enter a location' %}</div> 
+<div>   {% render_field form.image class='input-pic' %}</div> 
     <input type="submit" value="Submit" class="btn">
+  </div>
   </form>
+
+  {% endblock %}
