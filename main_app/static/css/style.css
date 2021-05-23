@@ -125,6 +125,7 @@ body {
   }
 
   .card-container {
+    text-align: center;
     border: 1px solid white;
     height: 19rem;
     background-color: white;
@@ -141,10 +142,10 @@ body {
 
   #card-name {
     font-size: 1.8rem;
-    font-family: "Comfortaa", cursive;
+    font-family: "Luckiest Guy", cursive;
     font-weight: 700;
     padding-left: 1rem;
-    color: #000000;
+    color: teal;
   }
 
   #card-desc {
@@ -173,6 +174,7 @@ body {
     height: 10rem;
     width: 90vw;
     object-fit: cover;
+    border-radius: 5px;
   }
 
   .input {
@@ -241,5 +243,8 @@ body {
     border: 1px solid transparent;
     color: white;
     background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
+  }
+  textarea {
+    resize: none;
   }
 }

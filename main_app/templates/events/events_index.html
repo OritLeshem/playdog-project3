@@ -6,7 +6,8 @@
 {% for event in events %}
 <a href="{% url 'events_detail' event.id %}">
         <div class='card-container'>
-        <div id='card-name'> {{ event.name }}</div>
+        <div id='card-name'>{{ event.name }}</div>
+
         <div class='card-img'><img src="{{ event.image.url }}"></div>
         <div id='card-date'> {{ event.date }}</div>
         <div id='card-loc'> {{ event.location }}</div>

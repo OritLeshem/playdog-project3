@@ -15,11 +15,18 @@
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
     <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
-    <div>{% render_field form.date class='input' placeholder='Date' %}</div> 
+    <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
     <div>{% render_field form.location class='input' placeholder='Location' %}</div> 
     <div>{% render_field form.image class='input-pic' %}</div> 
     <input type="submit" value="Add Event" class="btn">
   </div>
   </form>
 
+
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  </script>
+  
   {% endblock %}
