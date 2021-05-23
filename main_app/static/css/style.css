@@ -176,60 +176,70 @@ body {
   }
 
   .input {
-    width: 80vw;
+    width: 94vw;
     margin-left: 1rem;
-    padding: 8px;
-    margin: 7px;
-    border: 1px solid rgba(192, 192, 192, 0.747);
-    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 13px;
+    border: 1px solid gainsboro;
     font-family: "Comfortaa", cursive;
     color: black;
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
   }
+
   .input-pic {
-    width: 80vw;
+    width: 96vw;
     margin-left: 1rem;
-    padding: 8px;
+    padding: 13px;
     margin: 7px;
-    border: 1px solid rgba(192, 192, 192, 0.747);
-    border-radius: 15px;
-    font-family: "Comfortaa", cursive;
-    color: rgb(255, 250, 250);
+    border: 1px solid gainsboro;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
   }
 
   .btn {
-    width: 80vw;
+    width: 96vw;
     margin-left: 1rem;
-    padding: 8px;
+    padding: 0.7rem;
     margin: 7px;
-    border: 1px solid teal;
-    border-radius: 15px;
-    font-family: "Comfortaa", cursive;
+    border: 1px solid transparent;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
     color: white;
-    background-color: teal;
-  }
-
-  .form-field {
-    border: 1px solid rgba(192, 59, 59, 0.808);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90vw;
-    background-color: rgba(192, 59, 59, 0.808);
-    border-radius: 15px;
-    margin-top: 2rem;
-    margin: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
+    border-radius: 5px;
   }
 
   .form-h1 {
+    padding-top: 1rem;
     text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-family: "Comfortaa", cursive;
-    font-size: 1.5rem;
+    margin-bottom: 0;
+    font-family: "Luckiest Guy", cursive;
+    font-size: 2.5rem;
+  }
+
+  .form-field {
+    height: 100vh;
+    background-color: white;
+  }
+
+  #logo {
+    height: 3rem;
+    width: 4rem;
+  }
+
+  .img-div {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  input::-webkit-file-upload-button {
+    font-family: "Montserrat", sans-serif;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    color: white;
+    background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
   }
 }

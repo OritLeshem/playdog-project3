@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% block content%}
+{% load static %}
 
 {% load widget_tweaks %}
-
+<div class='form-field'>
 {% if object %}
 <div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
     {% else %}
-
-  <div><h1 class='form-h1'>Add A Play Dog Event</h1></div> 
+  <div><h1 class='form-h1'>Play Dog Events</h1></div> 
+  <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
     {% endif %}
-
   <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class='form-field'>
-<div>   {% render_field form.name class='input' placeholder='Enter a name' %}</div> 
-<div>   {% render_field form.description rows='6' class='input' placeholder='Enter a description' %}</div> 
-<div>    {% render_field form.date class='input' placeholder='Enter a date' %}</div> 
-<div>  {% render_field form.location class='input' placeholder='Enter a location' %}</div> 
-<div>   {% render_field form.image class='input-pic' %}</div> 
-    <input type="submit" value="Submit" class="btn">
+
+    <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
+    <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
+    <div>{% render_field form.date class='input' placeholder='Date' %}</div> 
+    <div>{% render_field form.location class='input' placeholder='Location' %}</div> 
+    <div>{% render_field form.image class='input-pic' %}</div> 
+    <input type="submit" value="Add Event" class="btn">
   </div>
   </form>
 
