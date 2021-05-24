@@ -35,7 +35,6 @@ class Dog(models.Model):
         choices=GENDERS,
         default=GENDERS[0][0]
     )
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(blank=True, null=True, upload_to='images/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -56,6 +55,7 @@ class Event(models.Model):
     location = models.FloatField()
     attendees = models.ManyToManyField(Dog)
     image = models.ImageField(blank=True, null=True, upload_to='images/')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

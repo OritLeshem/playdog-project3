@@ -309,6 +309,17 @@ body {
     margin-right: auto;
   }
 
+  #dog-pic-icon {
+    margin-top: 0.8rem;
+    border-radius: 50%;
+    height: 2.5rem;
+    width: 2.5rem;
+    object-fit: cover;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   #dog-p {
     font-family: "Montserrat", sans-serif;
     margin-left: 1rem;
@@ -330,4 +341,21 @@ body {
     margin: 1rem;
     padding-top: 3rem;
   }
+
+  .icontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .icon {
+    display: flex;
+
+  }
+
+  .btn-add-remove {
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
 }
+

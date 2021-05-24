@@ -69,7 +69,13 @@ def events_index(request):
 @login_required
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
-    return render(request, 'events/events_detail.html', {'event': event})
+    my_dogs = Dog.objects.filter(user=request.user)
+    dogs_not_attending = my_dogs.exclude(id__in=event.attendees.all().values_list('id'))
+    return render(request, 'events/events_detail.html', {
+        'event': event,
+        'my_dogs' : my_dogs,
+        'dogs_not_attending' : dogs_not_attending
+    })
 
 
 class EventUpdate(UpdateView):
@@ -102,3 +108,13 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+@login_required
+def assoc_dog(request, event_id, dog_id):
+    Event.objects.get(id=event_id).attendees.add(dog_id)
+    return redirect('events_detail', event_id=event_id)
+
+@login_required
+def unassoc_dog(request, event_id, dog_id):
+    Event.objects.get(id=event_id).attendees.remove(dog_id)
+    return redirect('events_detail', event_id=event_id)
