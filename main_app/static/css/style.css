@@ -278,11 +278,31 @@ body {
     margin-right: auto;
   }
 
+  #dog-pic-sqr {
+    margin-top: 0.8rem;
+    height: 12rem;
+    width: 19rem;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   #dog-pic-lrg {
     margin-top: 0.8rem;
     border-radius: 50%;
     height: 14rem;
     width: 14rem;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #dog-pic-lrg-sqr {
+    margin-top: 0.8rem;
+    height: 14rem;
+    width: 20rem;
     object-fit: cover;
     display: block;
     margin-left: auto;

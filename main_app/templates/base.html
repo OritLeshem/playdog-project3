@@ -38,22 +38,26 @@
         <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
         <div><a id='i-2' href="{% url 'logout' %}"><i class="fa fa-sign-in"></i></a></div>
         <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
+        <div><a id='i-3' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
     </footer> 
     <footer class='flex-foot-text'>
         <div id='txt-1'>Home</div>     
         <div id='txt-2'>Logout</div>
         <div id='txt-3'>Dogs</div>
+        <div id='txt-3'>Add Dog</div>
     </footer>
         {%else%}   
         <footer class='flex-foot'>
             <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
             <div><a id='i-2' href="{% url 'login' %}"><i class="fa fa-sign-in"></i></a></div>
             <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
+            <div><a id='i-3' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
         </footer> 
         <footer class='flex-foot-text'>
             <div id='txt-1'>Home</div>     
             <div id='txt-2'>Login</div>
             <div id='txt-3'>Dogs</div>
+            <div id='txt-3'>Add Dog</div>
         </footer>
         {%endif%}     
  
