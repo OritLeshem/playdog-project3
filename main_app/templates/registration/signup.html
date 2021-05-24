@@ -1,9 +1,22 @@
-<h1>Sign Up</h1>
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+<div><h1 class='form-h1'>Sign Up</h1></div> 
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
 
 {% if error_message %}<p>{{ error_message }}</p>{% endif %}
 
 <form method="post" action="{% url 'signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="signup">
+
+  <div>{% render_field form.username class='input' placeholder='Enter a Username' %}</div> 
+  <div>{% render_field form.password1 class='input' placeholder='Enter a Password' %}</div> 
+  <div>{% render_field form.password2 class='input' placeholder='Confirm your Password' %}</div> 
+  <input type="submit" class="btn" value="Signup Now!">
 </form>
+
+{% endblock %}

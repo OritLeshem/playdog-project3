@@ -1,7 +1,25 @@
-<h1>Log In</h1>
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+<div><h1 class='form-h1'>Login</h1></div> 
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <div>{% render_field form.username class='input' rows='4' placeholder='Username' %}</div> 
+    <div>{% render_field form.password class='input' placeholder='Password' %}</div> 
     <input type="submit" class="btn" value="login">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
+<div class='login-cont'>
+  <p id='dog-p'> ── Don't have an account? ── </p>
+  <br>
+  <a class='btn' href="{% url 'signup' %}">Sign up now!</a>
+</div>
+
+  {% endblock %}
