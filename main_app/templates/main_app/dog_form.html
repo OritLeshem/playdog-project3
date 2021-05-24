@@ -7,7 +7,7 @@
 
 {% if object %}
 <div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
-<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+<img id='dog-pic' src="{{ object.image.url }}"></a><br>
     {% else %}
   <div><h1 class='form-h1'>New Play Dog</h1></div> 
   <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>

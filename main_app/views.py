@@ -40,7 +40,7 @@ class DogCreate(LoginRequiredMixin, CreateView):
 
 class DogUpdate(LoginRequiredMixin, UpdateView):
     model = Dog
-    fields = ['breed', 'description', 'age', 'size', 'gender']
+    fields = ['name', 'breed', 'description', 'age', 'size', 'gender']
 
 
 @login_required
