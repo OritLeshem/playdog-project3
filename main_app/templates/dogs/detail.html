@@ -1,16 +1,32 @@
-<h1>Dog detail</h1>
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+
+<div><h1 class='form-h1'>Meet {{ dog.name}}</h1></div> 
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+
+<img id='dog-pic-lrg' src="{{ dog.image.url }}"></a>
+<p id='name'> {{ dog.name }}</p>
+<p id='age'> {{ dog.age }} years old</p>
+<p id='breed'>{{ dog.breed }}</p>
 
 
-        <span>{{ dog.name }}</span>
-        <p>Breed: {{ dog.breed }}</p>
-        <p>Description: {{ dog.description }}</p>
-        
-        
-      
+
+        <p id='age'> size {{ dog.size }} </p>
+        <p id='breed'> gender {{ dog.gender }}</p>
+
+        <p id='breed'>{{ dog.description }}</p>
+
+        <hr>
+<div class='btn-contain'>
+        <a class='btn' href="{% url 'dogs_update' dog.id %}">Edit</a>
+        <a class='btn' href="{% url 'dogs_delete' dog.id %}">Delete</a>       
+</div>      
       
  
  
   
  <!-- have events:  -->
-<hr>
 
+
+{% endblock %}

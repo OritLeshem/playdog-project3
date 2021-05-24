@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+{% if object %}
+<div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
+<img id='dog-pic' src="{{ object.image.url }}"></a><br>
+    {% else %}
+  <div><h1 class='form-h1'>New Play Dog</h1></div> 
+  <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+    {% endif %}
+  
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
+    <div>{% render_field form.breed class='input' placeholder='Breed' %}</div> 
+    <div>{% render_field form.description class='input' rows='4' placeholder='Description' %}</div> 
+    <div>{% render_field form.age class='input' placeholder='Age' %}</div> 
+    <p id='dog-p'>Size</p>
+    <div>{% render_field form.size class='input' %}</div> 
+    <p id='dog-p'>Gender</p>
+    <div>{% render_field form.gender class='input' %}</div> 
+    <div>{% render_field form.image class='input-pic' %}</div> 
+    
+
+    <input type="submit" value="Submit" class="btn">
+  </form>
+
+  {% endblock %}
