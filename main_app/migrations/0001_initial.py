@@ -16,29 +16,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Dog',
-<<<<<<< HEAD
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('breed', models.CharField(max_length=100)),
-                ('description', models.TextField(max_length=250)),
-                ('age', models.IntegerField()),
-                ('size', models.CharField(choices=[('T', 'TINY'), ('S', 'SMALL'), ('M', 'MEDIUM'), ('L', 'LARGE'), ('X', 'EXTRA LARGE')], default='M', max_length=1)),
-                ('gender', models.CharField(choices=[('M', 'MALE'), ('F', 'FEMALE')], default='M', max_length=1)),
-                ('image', models.CharField(max_length=250)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Event',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('date', models.DateField(verbose_name='Event date')),
-                ('description', models.TextField(max_length=250)),
-                ('location', models.FloatField()),
-                ('attendees', models.ManyToManyField(to='main_app.Dog')),
-=======
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
@@ -49,7 +26,6 @@ class Migration(migrations.Migration):
                 ('gender', models.CharField(choices=[('M', 'MALE'), ('F', 'FEMALE')], default='M', max_length=1)),
                 ('image', models.CharField(max_length=250)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
->>>>>>> c2494d3599b63d48645770c48cad0a6239ea4f07
             ],
         ),
         migrations.CreateModel(
