@@ -17,14 +17,14 @@ body {
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 2100px) {
+@media only screen and (max-width: 600px) {
   body {
     background-color: rgba(255, 255, 255, 0.863);
   }
 
   #i-1,
   #txt-1 {
-    color: rgba(131, 129, 129, 0.815);
+    color: black;
   }
 
   #i-2,
@@ -34,11 +34,6 @@ body {
 
   #i-3,
   #txt-3 {
-    color: rgba(131, 129, 129, 0.815);
-  }
-
-  #i-4,
-  #txt-4 {
     color: rgba(131, 129, 129, 0.815);
   }
 
@@ -321,6 +316,8 @@ body {
     width: 2.5rem;
     object-fit: cover;
     display: inline;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #dog-p {
@@ -345,8 +342,15 @@ body {
     padding-top: 3rem;
   }
 
+  .icontainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
   .icon {
     display: flex;
+
   }
 
   .btn-add-remove {
@@ -354,16 +358,5 @@ body {
     background-color: transparent;
   }
 
-  form.icon {
-    display: inline-block;
-  }
-  .center {
-    text-align: center;
-    margin: auto;
-  }
-
-  #info {
-    color: rgb(103, 184, 184);
-    opacity: 0.7;
-  }
 }
+

@@ -6,13 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin="">
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
@@ -26,9 +19,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>Play Dog</title>
-    <style>
-        #mapid { height: 15rem;width:95vw;margin:auto;margin-bottom: .6rem; }
-    </style>
 </head>
 <body>
 
@@ -54,20 +44,20 @@
         <div id='txt-1'>Home</div>     
         <div id='txt-2'>Logout</div>
         <div id='txt-3'>Dogs</div>
-        <div id='txt-3'>New Dog</div>
+        <div id='txt-3'>Add Dog</div>
     </footer>
         {%else%}   
         <footer class='flex-foot'>
             <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
             <div><a id='i-2' href="{% url 'login' %}"><i class="fa fa-sign-in"></i></a></div>
             <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
-            <div><a id='i-4' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
+            <div><a id='i-3' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
         </footer> 
         <footer class='flex-foot-text'>
             <div id='txt-1'>Home</div>     
             <div id='txt-2'>Login</div>
             <div id='txt-3'>Dogs</div>
-            <div id='txt-4'>New Dog</div>
+            <div id='txt-3'>Add Dog</div>
         </footer>
         {%endif%}     
  
@@ -75,8 +65,39 @@
     <!--JS FOR FOOTER BTN COLOR CHANGES-->
 
     <script>
+        let i = document.getElementById('i-1')
+        let txt = document.getElementById('txt-1')
+        let i2 = document.getElementById('i-2')
+        let txt2 = document.getElementById('txt-2')
+        let i3 = document.getElementById('i-3')
+        let txt3 = document.getElementById('txt-3')
 
+        i.addEventListener('click', (e) => {
+            i.style.color = 'black';
+            txt.style.color = 'black';
+            i2.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt2.style.color = 'rgba(131, 129, 129, 0.815)';
+            i3.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt3.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
 
+        i2.addEventListener('click', (e) => {
+            i2.style.color = 'black';
+            txt2.style.color = 'black';
+            i.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt.style.color = 'rgba(131, 129, 129, 0.815)';
+            i3.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt3.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
+
+        i3.addEventListener('click', (e) => {
+            i3.style.color = 'black';
+            txt3.style.color = 'black';
+            i.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt.style.color = 'rgba(131, 129, 129, 0.815)';
+            i2.style.color = 'rgba(131, 129, 129, 0.815)';
+            txt2.style.color = 'rgba(131, 129, 129, 0.815)';
+        })
     </script>
 
 </body>
