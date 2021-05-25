@@ -16,4 +16,6 @@ urlpatterns = [
     path('events/<int:event_id>/assoc_dog/<int:dog_id>/', views.assoc_dog, name='assoc_dog'),
     path('events/<int:event_id>/unassoc_dog/<int:dog_id>/', views.unassoc_dog, name='unassoc_dog'),
     path('accounts/signup/', views.signup, name='signup'),
+    # TEST PATH
+    path('test/', views.testmap, name='testmap'),
 ]

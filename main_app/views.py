@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 from .forms import EventForm
 
 
+def testmap(request):
+    return render(request, 'map.html')
+
 def home(request):
     return render(request, 'home.html')
 
