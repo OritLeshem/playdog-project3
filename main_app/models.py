@@ -51,13 +51,14 @@ class Dog(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField('Event date')
-    time = models.TimeField('Event time')
+    time = models.TimeField('Event time', default='00:00')
     description = models.TextField(max_length=250)
     location = models.FloatField()
     attendees = models.ManyToManyField(Dog)
     lat = models.DecimalField('Latitude', max_digits=9, decimal_places=6)
     lng = models.DecimalField('Longitude', max_digits=9, decimal_places=6)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(blank=True, null=True, upload_to='images/')
 
     def __str__(self):
         return self.name

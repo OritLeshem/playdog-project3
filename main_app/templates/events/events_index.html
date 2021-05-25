@@ -10,6 +10,9 @@
         <p id='age'> {{ event.date }} </p>
         <p id='breed'>{{ event.location }}</p>
         <p id='breed'>Hosted by {{event.user}}</p>
+        <p id='breed'>Latitude {{event.lat}}</p>
+        <p id='breed'>Longitude {{event.lng}}</p>
+        <p id='breed'>Time {{event.time}}</p>
 
         <p id='age'><a href="{% url 'events_detail' event.id %}"><i id='info' class="fa fa-info-circle"></i></a></p> 
         <hr>
