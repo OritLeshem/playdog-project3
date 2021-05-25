@@ -7,8 +7,9 @@
         <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
         <hr>
 {% for event in events %}
-        <p id='name'> {{ event.name }}</p>
-<a href="{% url 'events_detail' event.id %}"><img id='dog-pic-sqr' src="{{ event.image.url }}"></a>
+
+        <p id='name'> {{ event.name }}</p> 
+
         <p id='age'> {{ event.date }} </p>
         <p id='breed'>{{ event.location }}</p>
         <p id='breed'>Hosted by {{event.user}}</p>

@@ -20,6 +20,7 @@ body {
 @media only screen and (max-width: 600px) {
   body {
     background-color: rgba(255, 255, 255, 0.863);
+    margin-bottom: 2.5%;
   }
 
   #i-1,
@@ -222,7 +223,7 @@ body {
   }
 
   .form-field {
-    height: 100vh;
+    height: 97%;
     background-color: white;
     position: relative;
   }
@@ -358,5 +359,24 @@ body {
     background-color: transparent;
   }
 
+  form.icon {
+    display: inline-block;
+  }
+  .center {
+    text-align: center;
+    margin: auto;
+  }
+
+  #info {
+    color: rgb(103, 184, 184);
+    opacity: 0.7;
+  }
+  .ui-datepicker {
+    z-index: 1000;
+    position: relative;
+  }
+  main.container {
+    padding-bottom: 25%;
+  }
 }
 
