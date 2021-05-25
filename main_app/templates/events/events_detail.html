@@ -43,9 +43,10 @@
 
         {% if my_dogs.count %}
         
-        
+
         <p id='age'> My Dogs:</p>
         <p id='age'>Click to Add/Remove Your Dog(s)</p>
+
 
         {% for dog in my_dogs %}
         {% if dog in dogs_not_attending %}
@@ -57,12 +58,12 @@
             </form>
     </div> 
  
-                {% endif %}
+        {% endif %}
                 
                 {% endfor %}
                 {% else %}
         <div>No Dogs to add</div>
-                {% endif %}    
+        {% endif %}    
                         
         <br>
 
