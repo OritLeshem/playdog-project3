@@ -15,10 +15,10 @@
     {% csrf_token %}
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
-    <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
+    <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
+    <div id="mapid"></div>
     <div>{% render_field form.location class='input' placeholder='Location' %}</div> 
-    <div>{% render_field form.image class='input-pic' %}</div> 
     <input type="submit" value="Add Event" class="btn">
   </div>
   </form>
@@ -28,6 +28,58 @@
     $( function() {
       $( "#datepicker" ).datepicker();
       } );
+
+
+
+
+      let latitude;
+        let longitude;
+        
+        var mymap = L.map('mapid').setView([43.653, -79.383], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
+            }).addTo(mymap);
+        
+        
+        
+        var eventMarker;
+        
+        
+        function onMapClick(e) {
+            if (!eventMarker){
+                eventMarker = new L.marker(e.latlng, {draggable: 'true', autoPan: 'true'});
+                latitude = e.latlng.lat.toFixed(6);
+                longitude = e.latlng.lng.toFixed(6);
+                eventMarker.on('click', function(e){
+                    var marker = e.target;
+                    var postion = marker.getLatLng();
+                    marker.setLatLng(new L.LatLng(position.lat, position.lng), {draggable: 'true', autoPan: 'true'});
+                    mymap.panTo(new L.LatLng(position.lat, position.lng))
+                    eventMarker = marker;
+                    
+                  });
+                  mymap.addLayer(eventMarker);
+                
+            }
+            else {
+                eventMarker.setLatLng(e.latlng);
+                latitude = e.latlng.lat.toFixed(6);
+                longitude = e.latlng.lng.toFixed(6);
+                
+                
+              }
+              console.log(latitude)
+              console.log(longitude)
+        
+        };
+        mymap.on('click', onMapClick);
+        
+
   </script>
 
   {% endblock %}

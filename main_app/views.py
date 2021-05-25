@@ -21,7 +21,6 @@ def dogs_index(request):
     return render(request, 'dogs/index.html', {'dogs': dogs})
 
 
-@login_required
 def dogs_detail(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
     # events_dog_dosnt_have=Event.objects.exclude(id__in = dog.events.all().values_list('id'))
@@ -70,11 +69,12 @@ def events_index(request):
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
     my_dogs = Dog.objects.filter(user=request.user)
-    dogs_not_attending = my_dogs.exclude(id__in=event.attendees.all().values_list('id'))
+    dogs_not_attending = my_dogs.exclude(
+        id__in=event.attendees.all().values_list('id'))
     return render(request, 'events/events_detail.html', {
         'event': event,
-        'my_dogs' : my_dogs,
-        'dogs_not_attending' : dogs_not_attending
+        'my_dogs': my_dogs,
+        'dogs_not_attending': dogs_not_attending
     })
 
 
@@ -109,10 +109,12 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+
 @login_required
 def assoc_dog(request, event_id, dog_id):
     Event.objects.get(id=event_id).attendees.add(dog_id)
     return redirect('events_detail', event_id=event_id)
+
 
 @login_required
 def unassoc_dog(request, event_id, dog_id):
