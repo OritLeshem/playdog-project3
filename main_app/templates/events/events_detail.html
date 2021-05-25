@@ -31,24 +31,35 @@
         <h5>No Attendees Yet!</h5>
 {% endif %}
 
-<p id='age'> My Dogs: </p>
-{% if my_dogs.count %}
+        {% else %}
+        <p id='age'>No Play Dogs Currently Attending</p>
+        {% endif %}
+
+
+
+        {% if my_dogs.count %}
+        
+
+        <p id='age'> My Dogs:</p>
+        <p id='age'>Click to Add/Remove Your Dog(s)</p>
+
+
         {% for dog in my_dogs %}
-        <div class="icontainer">
-                {% if dog in dogs_not_attending %}
-                        <form class="icon" action="{% url 'assoc_dog' event.id dog.id %}" method="post">
-                                {% csrf_token %}
-                                <img id='dog-pic-icon' src="{{ dog.image.url }}">
-                                <p id='age'>{{dog.name}}</p>
-                                <button type="submit" class="btn-add-remove"><i class="fa fa-plus-square-o"></i></button>
-                        </form>
-                {% endif %}
-        </div>
+        {% if dog in dogs_not_attending %}
+
+    <div class='center'>           
+            <form class="icon" action="{% url 'assoc_dog' event.id dog.id %}" method="post">
+                {% csrf_token %}    
+                <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ dog.image.url }}"></button>
+            </form>
+    </div> 
+ 
+        {% endif %}
                 
         {% endfor %}
 {% else %}
         <div>No Dogs to add</div>
-{% endif %}    
+        {% endif %}    
                         
 <br>
 
