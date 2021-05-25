@@ -85,6 +85,7 @@ body {
     justify-content: space-evenly;
     text-align: center;
     bottom: 0;
+    padding-left: 0.6rem;
     left: 0;
     width: 100%;
     background-color: rgb(253, 253, 253);
@@ -92,6 +93,7 @@ body {
     font-family: "Pattaya", sans-serif;
     color: rgb(131, 129, 129, 0.815);
   }
+
   i.fa {
     font-size: 2rem;
     padding-top: 0.2rem;
