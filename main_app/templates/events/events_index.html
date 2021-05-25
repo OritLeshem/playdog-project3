@@ -11,7 +11,7 @@
 <a href="{% url 'events_detail' event.id %}"><img id='dog-pic-sqr' src="{{ event.image.url }}"></a>
         <p id='age'> {{ event.date }} </p>
         <p id='breed'>{{ event.location }}</p>
-        <p id='breed'>Hosted by {{user}}</p>
+        <p id='breed'>Hosted by {{event.user}}</p>
 
       
         <hr>
