@@ -55,8 +55,7 @@ def DeleteDog(request, pk):
 # EVENTS:_________________
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['name', 'description', 'date', 'location', 'image']
-
+    fields = ['name', 'description', 'date', 'location', 'lat', 'lng']
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
