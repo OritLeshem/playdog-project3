@@ -24,7 +24,6 @@ def dogs_index(request):
     return render(request, 'dogs/index.html', {'dogs': dogs})
 
 
-@login_required
 def dogs_detail(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
     # events_dog_dosnt_have=Event.objects.exclude(id__in = dog.events.all().values_list('id'))
