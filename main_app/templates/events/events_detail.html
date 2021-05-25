@@ -1,11 +1,62 @@
-<h1>Event detail</h1>
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+<div><h1 class='form-h1'>{{ event.name}}</h1></div> 
+<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+
+<p id='name'> {{ event.name }}</p>
+<p id='age'> {{ event.date }}</p>
+<p id='breed'>{{ event.location }}</p>
 
 
-        <span>{{ event.name }}</span>
-        <p>Description: {{ event.description }}</p>
-        
-        <a href="{% url 'events_update' event.id %}">Edit</a> -->
-        <a href="{% url 'events_delete' event.id %}">Delete</a>       
-       
+<img id='dog-pic-lrg-sqr' src="{{ event.image.url }}">
+
+<p id='breed'>{{ event.description }}</p>
+
+<hr>
+<br>
+<p id='age'> Attending:  </p>
+{% if event.attendees.count %}
+<div class="icontainer">
+        {% for attendee in event.attendees.all %}     
+                <form class="icon" action="{% url 'unassoc_dog' event.id attendee.id %}" method="post">
+                        {% csrf_token %}
+                        <img id='dog-pic-icon' src="{{ attendee.image.url }}">
+                        <p id='age'>{{attendee.name}}</p>
+                        <button type="submit" class="btn-add-remove"><i class="fa fa-minus-square-o"></i></button>
+                </form>
+        {% endfor %}
+</div>             
+{% else %}
+        <h5>No Attendees Yet!</h5>
+{% endif %}
+
+<p id='age'> My Dogs: </p>
+{% if my_dogs.count %}
+        {% for dog in my_dogs %}
+        <div class="icontainer">
+                {% if dog in dogs_not_attending %}
+                        <form class="icon" action="{% url 'assoc_dog' event.id dog.id %}" method="post">
+                                {% csrf_token %}
+                                <img id='dog-pic-icon' src="{{ dog.image.url }}">
+                                <p id='age'>{{dog.name}}</p>
+                                <button type="submit" class="btn-add-remove"><i class="fa fa-plus-square-o"></i></button>
+                        </form>
+                {% endif %}
+        </div>
+                
+        {% endfor %}
+{% else %}
+        <div>No Dogs to add</div>
+{% endif %}    
+                        
+<br>
+
+
+
+<div class='btn-contain'>       
+        <a class='btn' href="{% url 'events_update' event.id %}">Edit</a> 
+        <a class='btn' href="{% url 'events_delete' event.id %}">Delete</a>       
+</div>       
       
- 
+        {% endblock %}
