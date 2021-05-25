@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
 <div class='form-field'>
         <div><h1 class='form-h1'>Play Dog Events</h1></div> 
         <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
         <hr>
 {% for event in events %}
-
         <p id='name'> {{ event.name }}</p> 
-
         <p id='age'> {{ event.date }} </p>
         <p id='breed'>{{ event.location }}</p>
         <p id='breed'>Hosted by {{event.user}}</p>
 
-      
+        <p id='age'><a href="{% url 'events_detail' event.id %}"><i id='info' class="fa fa-info-circle"></i></a></p> 
         <hr>
 {% endfor %}
 </div>
+
+
 {% endblock %}

@@ -18,11 +18,12 @@
         <p id='breed'>{{ dog.description }}</p>
 
         <hr>
+        {% if user == dog.user %}
 <div class='btn-contain'>
         <a class='btn' href="{% url 'dogs_update' dog.id %}">Edit</a>
         <a class='btn' href="{% url 'dogs_delete' dog.id %}">Delete</a>       
 </div>      
-      
+      {% endif %}
  
  
   

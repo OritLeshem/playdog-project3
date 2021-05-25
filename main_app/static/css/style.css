@@ -17,7 +17,7 @@ body {
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 2100px) {
   body {
     background-color: rgba(255, 255, 255, 0.863);
     margin-bottom: 2.5%;
@@ -25,7 +25,7 @@ body {
 
   #i-1,
   #txt-1 {
-    color: black;
+    color: rgba(131, 129, 129, 0.815);
   }
 
   #i-2,
@@ -35,6 +35,11 @@ body {
 
   #i-3,
   #txt-3 {
+    color: rgba(131, 129, 129, 0.815);
+  }
+
+  #i-4,
+  #txt-4 {
     color: rgba(131, 129, 129, 0.815);
   }
 
@@ -351,7 +356,6 @@ body {
 
   .icon {
     display: flex;
-
   }
 
   .btn-add-remove {
@@ -379,4 +383,3 @@ body {
     padding-bottom: 25%;
   }
 }
-
