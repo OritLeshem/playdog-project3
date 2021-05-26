@@ -3,6 +3,7 @@ from django.db.models.fields import CharField
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
+
 # for possible use of PointField
 #from django.contrib.gis.db import models
 
@@ -50,10 +51,11 @@ class Dog(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=50)
+    time = models.CharField(max_length=50)
     date = models.DateField('Event date')
     time = models.TimeField('Event time', default='00:00')
     description = models.TextField(max_length=250)
-    location = models.FloatField()
+    location = models.CharField(max_length=150)
     attendees = models.ManyToManyField(Dog)
     lat = models.DecimalField('Latitude', max_digits=9, decimal_places=6)
     lng = models.DecimalField('Longitude', max_digits=9, decimal_places=6)
@@ -64,4 +66,4 @@ class Event(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['date']
+        ordering = ['-date']

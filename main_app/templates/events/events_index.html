@@ -7,14 +7,17 @@
 </style>
 <div class='form-field'>
         <div><h1 class='form-h1'>Play Dog Events</h1></div> 
+        <p id='age'>{% now "F jS Y" %}</p><br>
         <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
         <hr>
 {% for event in events %}
+
         <p id='name'> {{ event.name }}</p> 
-        <p id='age'> {{ event.date }} </p>
-        <div id="mapid"></div>
-        <p id='breed'>{{ event.location }}</p>
-        <p id='breed'>Hosted by {{event.user}}</p>
+        <p id='age'> {{ event.date}} </p>
+        <p id='age'>{{ event.time}}</p>
+        <p id='breed'>{{ event.location}}</p>
+
+        <p id='age'>Hosted by {{event.user}}</p>
 
         <p id='breed'>Time {{event.time}}</p>
 
