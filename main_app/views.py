@@ -74,7 +74,7 @@ def events_map(request):
             lats.append(event.lat)
             lngs.append(event.lng)
 
-    return render(request, 'events/events_map.html',{'lats' : [float(i) for i in lats], 'lngs' : [float(i) for i in lngs], 'lng': lng, 'lat': lat})
+    return render(request, 'events/events_map.html',{'lats' : [float(i) for i in lats], 'lngs' : [float(i) for i in lngs]})
 
 
 @login_required
@@ -92,7 +92,7 @@ def events_detail(request, event_id):
 
 class EventUpdate(UpdateView):
     model = Event
-    fields = ['name', 'description', 'date', 'location']
+    fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
     success_url = '/events/'
 
 

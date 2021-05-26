@@ -53,7 +53,6 @@ class Event(models.Model):
     name = models.CharField(max_length=50)
     time = models.CharField(max_length=50)
     date = models.DateField('Event date')
-    time = models.TimeField('Event time', default='00:00')
     description = models.TextField(max_length=250)
     location = models.CharField(max_length=150)
     attendees = models.ManyToManyField(Dog)
