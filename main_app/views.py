@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Dog, Event
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -7,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from .forms import EventForm
 
 
 def testmap(request):
@@ -56,8 +54,7 @@ def DeleteDog(request, pk):
 # EVENTS:_________________
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
-    fields = ['name', 'description', 'date', 'location', 'image', 'time']
-
+    fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -67,6 +64,17 @@ class EventCreate(LoginRequiredMixin, CreateView):
 def events_index(request):
     events = Event.objects.all()
     return render(request, 'events/events_index.html', {'events': events})
+
+def events_map(request):
+
+    events = Event.objects.all()
+    lats = []
+    lngs = []
+    for event in events:
+            lats.append(event.lat)
+            lngs.append(event.lng)
+
+    return render(request, 'events/events_map.html',{'lats' : [float(i) for i in lats], 'lngs' : [float(i) for i in lngs]})
 
 
 @login_required
@@ -84,7 +92,7 @@ def events_detail(request, event_id):
 
 class EventUpdate(UpdateView):
     model = Event
-    fields = ['name', 'description', 'date', 'location']
+    fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
     success_url = '/events/'
 
 
