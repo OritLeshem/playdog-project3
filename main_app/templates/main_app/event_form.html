@@ -2,6 +2,8 @@
 {% block content%}
 {% load static %}
 {% load widget_tweaks %}
+
+
 <div class='form-field'>
 {% if object %}
 <div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
@@ -15,68 +17,61 @@
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
+    <div>{% render_field form.time class='input' placeholder='Time: HH:MM AM/PM' %}</div> 
+
+
     <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
-    <div id="mapid"></div>
-    <div>{% render_field form.location class='input' placeholder='Location' %}</div> 
+    <div id="map"></div>
+    <div>{% render_field form.location id='loc' class='input' placeholder='Address' %}</div> 
     <input type="submit" value="Add Event" class="btn">
   </div>
   </form>
-  
+
+
 <script>
     $( function() {
       $( "#datepicker" ).datepicker();
       } );
 
+      let loc = document.getElementById('loc')
 
+      const apiKey = "AAPK96607c5decf14fdb8e94886eef0abdbfBvOC--hJuzxdz-8dyLVkGuOmApTIY5UYJM5BhgeZtz9wopDLmkbBPQ0AH6cE8i0E";
+    const basemapEnum = "ArcGIS:Navigation";
 
+    const map = L.map('map', {
+      minZoom: 2
+    }).setView([43.653, -79.383], 13);
 
-      let latitude;
-        let longitude;
+    L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+      apiKey: apiKey
+    }).addTo(map);
 
-        var mymap = L.map('mapid').setView([43.653, -79.383], 13);
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
-            }).addTo(mymap);
+       const geocoder = L.esri.Geocoding.geocodeService({
+      apikey: apiKey
+    });
 
+    const layerGroup = L.layerGroup().addTo(map);
 
+    map.on("click", function (e) {
+      geocoder.reverse().latlng(e.latlng).run(function (error, result) {
+        if (error) {
+          return;
+        }
 
-        var eventMarker;
+        const lngLatString = `${Math.round(result.latlng.lng * 100000)/100000}, ${Math.round(result.latlng.lat * 100000)/100000}`;
 
+        layerGroup.clearLayers();
+        marker = L.marker(result.latlng)
+          .addTo(layerGroup)
+          .bindPopup(`<p>${result.address.Match_addr}</p>`)
+          .openPopup();
+          console.log(result.address.Match_addr)
 
-        function onMapClick(e) {
-            if (!eventMarker){
-                eventMarker = new L.marker(e.latlng, {draggable: 'true', autoPan: 'true'});
-                latitude = e.latlng.lat.toFixed(6);
-                longitude = e.latlng.lng.toFixed(6);
-                eventMarker.on('click', function(e){
-                    var marker = e.target;
-                    var postion = marker.getLatLng();
-                    marker.setLatLng(new L.LatLng(position.lat, position.lng), {draggable: 'true', autoPan: 'true'});
-                    mymap.panTo(new L.LatLng(position.lat, position.lng))
-                    eventMarker = marker;
+          loc.value = result.address.Match_addr
+      });
+    });
 
-                  });
-                  mymap.addLayer(eventMarker);
-
-            }
-            else {
-                eventMarker.setLatLng(e.latlng);
-                latitude = e.latlng.lat.toFixed(6);
-                longitude = e.latlng.lng.toFixed(6);
-
-
-              }
-              console.log(latitude)
-              console.log(longitude)
-
-        };
-        mymap.on('click', onMapClick);
-
+ 
 
   </script>
 
