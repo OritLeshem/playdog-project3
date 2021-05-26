@@ -15,32 +15,15 @@
     {% endfor %}
 </ul>
 
-
 <script> 
     var lats = "{{lats}}";
     var lngs = "{{lngs}}";
-    var latzero = "{{lat}}"
-    var lngzero = "{{lng}}"
-    console.log(latzero);
-    console.log(lngzero);
-    console.log(lats);
-    console.log(lngs);
-
-    console.log(typeof lats);
-    console.log(typeof lngs);
 
     lats = JSON.parse(lats);
     lngs = JSON.parse(lngs);
 
-    console.log(typeof lats);
-    console.log(typeof lngs);
 
-
-
-    console.log(parseFloat(lats[0]));
-    console.log(parseFloat(lngs[0]));
-
-    var mymap = L.map('mapid').setView([parseFloat(latzero), parseFloat(lngzero)], 10);
+    var mymap = L.map('mapid').setView([lats[0], lngs[0]], 10);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
