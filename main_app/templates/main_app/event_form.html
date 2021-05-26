@@ -16,11 +16,11 @@
     {% csrf_token %}
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
+    <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
+    <div>{% render_field form.lat id='lat' %}</div>
+    <div>{% render_field form.lng id='lng' %}</div>
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
     <div>{% render_field form.time class='input' placeholder='Time: HH:MM AM/PM' %}</div> 
-
-
-    <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
     <div id="map"></div>
     <div>{% render_field form.location id='loc' class='input' placeholder='Address' %}</div> 
     <input type="submit" value="Add Event" class="btn">
@@ -34,9 +34,27 @@
       $( "#datepicker" ).datepicker();
       } );
 
+        
+        // latEl.style.visibility = 'hidden';
+        // lngEl.style.display = 'none'
+
+
+
+              
+
+        // var mymap = L.map('mapid').setView([43.653, -79.383], 13);
+        // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        //     maxZoom: 18,
+        //     id: 'mapbox/streets-v11',
+        //     tileSize: 512,
+        //     zoomOffset: -1,
+        //     accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
+        //     }).addTo(mymap);
+
 
 // ESRI.LEAFLET/ GEOCODER API, REVERSE GEOCODE SETUP
-    let loc = document.getElementById('loc')
+    let loc = document.getElementById('loc');
 
     const apiKey = "AAPK96607c5decf14fdb8e94886eef0abdbfBvOC--hJuzxdz-8dyLVkGuOmApTIY5UYJM5BhgeZtz9wopDLmkbBPQ0AH6cE8i0E";
     const basemapEnum = "ArcGIS:Navigation";
@@ -56,25 +74,46 @@
 
     const layerGroup = L.layerGroup().addTo(map);
 
-    map.on("click", function (e) {
-      geocoder.reverse().latlng(e.latlng).run(function (error, result) {
-        if (error) {
-          return;
-        }
+    let latEl = document.getElementById('lat');
+    let lngEl = document.getElementById('lng');
+    console.log(lngEl.value);
+    console.log(latEl.value);
 
-        const lngLatString = `${Math.round(result.latlng.lng * 100000)/100000}, ${Math.round(result.latlng.lat * 100000)/100000}`;
+    // if (lngEl.value !='' && !latEl.value !=''){
+      map.on("click", function (e) {
+        geocoder.reverse().latlng(e.latlng).run(function (error, result) {
+          if (error) {
+            return;
+          }
 
-        layerGroup.clearLayers();
-        marker = L.marker(result.latlng)
+          const lngLatString = `${Math.round(result.latlng.lng * 100000)/100000}, ${Math.round(result.latlng.lat * 100000)/100000}`;
+
+          layerGroup.clearLayers();
+          marker = L.marker(result.latlng)
           .addTo(layerGroup)
           .bindPopup(`<p>${result.address.Match_addr}</p>`)
 
           console.log(result.address.Match_addr)
 
           loc.value = result.address.Match_addr
-      });
-    });
+          console.log(typeof e.latlng.lat);
+          console.log(typeof e.latlng.lng);
 
+          latEl.value=e.latlng.lat.toFixed(6);
+          lngEl.value=e.latlng.lng.toFixed(6);
+          console.log(latEl.value);
+          console.log(lngEl.value);
+
+        });
+      });
+    // }
+
+    // else {
+    //   const marker = L.marker([longitude, latitude]).addTo(map)
+    // }
+
+    
+    
   </script>
 
   {% endblock %}

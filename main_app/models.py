@@ -56,8 +56,10 @@ class Event(models.Model):
     description = models.TextField(max_length=250)
     location = models.CharField(max_length=150)
     attendees = models.ManyToManyField(Dog)
-    image = models.ImageField(blank=True, null=True, upload_to='images/')
+    lat = models.DecimalField('Latitude', max_digits=9, decimal_places=6)
+    lng = models.DecimalField('Longitude', max_digits=9, decimal_places=6)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(blank=True, null=True, upload_to='images/')
 
     def __str__(self):
         return self.name
