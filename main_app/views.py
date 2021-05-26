@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Dog, Event
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -7,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from .forms import EventForm
+import simplejson
 
 
 def testmap(request):
@@ -65,6 +64,28 @@ class EventCreate(LoginRequiredMixin, CreateView):
 def events_index(request):
     events = Event.objects.all()
     return render(request, 'events/events_index.html', {'events': events})
+
+def events_map(request):
+
+    events = Event.objects.all()
+    lats = []
+    lngs = []
+    for event in events:
+            lats.append(event.lat)
+            lngs.append(event.lng)
+    # lats = list(Event.objects.values_list('lat', flat=True))
+    # lngs = list(Event.objects.values_list('lng', flat=True))
+
+    lat = Event.objects.first().lat
+    lng = Event.objects.first().lng
+    jlats = []
+    jlngs = []
+    jlats = simplejson.dumps(lats)
+    jlngs = simplejson.dumps(lngs)
+    # for i in range(len(lats)-1):
+    #     jlats[i]= simplejson.dumps(lats[i])
+    #     jlats[i]= simplejson.dumps(lngs[i])
+    return render(request, 'events/events_map.html',{'lats' : [float(i) for i in lats], 'lngs' : [float(i) for i in lngs], 'lng': lng, 'lat': lat})
 
 
 @login_required
