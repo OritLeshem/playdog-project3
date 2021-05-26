@@ -17,14 +17,15 @@
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
     <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
-    <div>{% render_field form.lat id='lat' %}</div>
-    <div>{% render_field form.lng id='lng' %}</div>
+
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
     <div>{% render_field form.time class='input' placeholder='Time: HH:MM AM/PM' %}</div> 
     <div id="map"></div>
     <div>{% render_field form.location id='loc' class='input' placeholder='Address' %}</div> 
     <input type="submit" value="Add Event" class="btn">
   </div>
+  <div>{% render_field form.lat id='lat' %}</div>
+  <div>{% render_field form.lng id='lng' %}</div>
   </form>
 
 
@@ -35,9 +36,7 @@
       } );
 
         
-        // latEl.style.visibility = 'hidden';
-        // lngEl.style.display = 'none'
-
+ 
 
 
               
@@ -76,8 +75,9 @@
 
     let latEl = document.getElementById('lat');
     let lngEl = document.getElementById('lng');
-    console.log(lngEl.value);
-    console.log(latEl.value);
+    latEl.style.visibility = 'hidden';
+    lngEl.style.display = 'none'
+
 
     // if (lngEl.value !='' && !latEl.value !=''){
       map.on("click", function (e) {

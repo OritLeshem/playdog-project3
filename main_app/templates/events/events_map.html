@@ -2,25 +2,24 @@
 {% block content %}
 {% load static %}
 <style>
-    #mapid { height: 60vw;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }
+    #mapid { height: 60vh;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }
 </style>
 
+<div><h1 class='form-h1'>Play Dog Events</h1></div> 
+<a href="{% url 'events_index' %}"><div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div></a>
+
+
 <div id="mapid"></div>
-<ul>
-    {% for lat in lats %}
-        <li>latitude: {{lat}}</li>
-    {% endfor %}
-    {% for lng in lngs %}
-        <li>longitude: {{lng}}</li>
-    {% endfor %}
-</ul>
+
 
 <script> 
     var lats = "{{lats}}";
     var lngs = "{{lngs}}";
 
+
     lats = JSON.parse(lats);
     lngs = JSON.parse(lngs);
+
 
 
     var mymap = L.map('mapid').setView([lats[0], lngs[0]], 10);
@@ -35,10 +34,15 @@
 
     let eventMarker;
 
+
+
     for(i = 0; i < lats.length; i++){
         eventMarker = L.marker([lats[i], lngs[i]]).addTo(mymap)
+
     }
-   
+
+
+  
 
     
  </script>
