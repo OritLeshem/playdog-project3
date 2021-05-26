@@ -23,15 +23,24 @@
         {% for attendee in event.attendees.all %}  
 
         
-
+    {% if user != attendee.user %}
 
     <div class='center'>           
-        <form class="icon" action="{% url 'unassoc_dog' event.id attendee.id %}" method="post">
+        <form class="icon" action="{% url 'detail' attendee.id %}" method="post">
             {% csrf_token %}    
             <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
+            <p id='breed'>{{ attendee.name }}</p>
         </form>
     </div> 
-
+        {% else %}
+        <div class='center'>           
+            <form class="icon" action="{% url 'unassoc_dog' event.id attendee.id %}" method="post">
+                {% csrf_token %}    
+                <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
+                <p id='breed'>{{ attendee.name }}</p>
+            </form>
+        </div> 
+    {% endif %}
 
         {% endfor %}
 
@@ -48,6 +57,7 @@
             <form class="icon" action="{% url 'assoc_dog' event.id dog.id %}" method="post">
                 {% csrf_token %}    
                 <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ dog.image.url }}"></button>
+                <p id='breed'>{{ dog.name }}</p>
             </form>
     </div> 
 
@@ -55,18 +65,18 @@
 
                 {% endfor %}
                 {% else %}
-        <div>No Dogs to add</div>
+
         {% endif %}    
 
         <br>
 
 
-
+{% if user == event.user %}
         <div class='btn-contain'>       
-                <a class='btn' href="{% url 'events_update' event.id %}">Edit</a> 
-                <a class='btn' href="{% url 'events_delete' event.id %}">Delete</a>       
+                <a class='btn' href="{% url 'events_update' event.id %}">Edit Event</a> 
+                <a class='btn' href="{% url 'events_delete' event.id %}">Delete Event</a>       
         </div>  
-
+{% endif %}
         <script>
             $( function() {
               $( "#datepicker" ).datepicker();
