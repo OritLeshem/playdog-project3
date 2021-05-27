@@ -3,9 +3,13 @@ from django.db.models.fields import CharField
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
+import uuid
 
 # for possible use of PointField
 #from django.contrib.gis.db import models
+
+def make_unique_picture_filename(instance, filename):
+    return uuid.uuid4().hex[:6] + filename[filename.rfind('.'):]
 
 GENDERS = (
     ('M', 'MALE'),
@@ -36,7 +40,7 @@ class Dog(models.Model):
         choices=GENDERS,
         default=GENDERS[0][0]
     )
-    image = models.ImageField(blank=True, null=True, upload_to='images/')
+    image = models.ImageField(blank=True, null=True, upload_to=make_unique_picture_filename)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
