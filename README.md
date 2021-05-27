@@ -5,7 +5,7 @@
 
 
 PLAYDOG is a mobile platform for owners to find/host play dates for thier dogs.\
-Features include an easy to use map functionality, coupled with a fun and interactive user interface.\
+Features include an easy to use map functionality, coupled with a fun and interactive user interface.
 
 
 Built With:
