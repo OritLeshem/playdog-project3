@@ -1,11 +1,10 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from .models import Dog, Event
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 import json
 
 
@@ -53,6 +52,18 @@ def DeleteDog(request, pk):
     return redirect('dogs_index')
 
 
+@login_required
+def assoc_dog(request, event_id, dog_id):
+    Event.objects.get(id=event_id).attendees.add(dog_id)
+    return redirect('events_detail', event_id=event_id)
+
+
+@login_required
+def unassoc_dog(request, event_id, dog_id):
+    Event.objects.get(id=event_id).attendees.remove(dog_id)
+    return redirect('events_detail', event_id=event_id)
+
+
 # EVENTS:_________________
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
@@ -61,6 +72,12 @@ class EventCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    success_url = '/events/'
+
+
+class EventUpdate(LoginRequiredMixin, UpdateView):
+    model = Event
+    fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
     success_url = '/events/'
 
 
@@ -102,12 +119,10 @@ def events_detail(request, event_id):
     })
 
 
-class EventUpdate(UpdateView):
-    model = Event
-    fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
-    success_url = '/events/'
 
 
+
+@login_required
 def DeleteEvent(request, pk):
     event = Event.objects.get(id=pk)
     event.delete()
@@ -133,14 +148,3 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
-@login_required
-def assoc_dog(request, event_id, dog_id):
-    Event.objects.get(id=event_id).attendees.add(dog_id)
-    return redirect('events_detail', event_id=event_id)
-
-
-@login_required
-def unassoc_dog(request, event_id, dog_id):
-    Event.objects.get(id=event_id).attendees.remove(dog_id)
-    return redirect('events_detail', event_id=event_id)

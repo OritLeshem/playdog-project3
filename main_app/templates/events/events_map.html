@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<style>#mapid { height: 60vh;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }</style>
 
+<!-- Event Map View -->
+
+<style>#mapid { height: 60vh;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }</style>
 <div><h1 class='form-h1'>Play Dog Events</h1></div> 
 <a href="{% url 'events_index' %}"><div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div></a>
-
-
 <div id="mapid"></div>
 
 <script> 
@@ -14,11 +14,8 @@
     var lngs = "{{ lngs }}";
     var names = {{ names|safe }};
     var locs = {{ locs|safe }};
-
-
     lats = JSON.parse(lats);
     lngs = JSON.parse(lngs);
-
     var mymap = L.map('mapid').setView([lats[0], lngs[0]], 10);
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -28,16 +25,12 @@
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
         }).addTo(mymap);
-
     let eventMarker;
-
     for(i = 0; i < lats.length; i++){
         eventMarker = L.marker([lats[i], lngs[i]]).addTo(mymap)
         .bindPopup(`${names[i]} at ${locs[i]}`)
         .openPopup()
-
     }
-
  </script>
 
 {% endblock %}
