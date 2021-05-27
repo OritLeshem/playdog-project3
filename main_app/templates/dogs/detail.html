@@ -21,7 +21,7 @@
         <hr>
 
         {% if events.count %}
-        <p id='age'> {{dog.name}} is attending</p>
+        <p id='age'> {{dog.name}} is attending: </p>
         {% for event in events %}
         
         <a href="{% url 'events_detail' event.id%}"><p id='breed-btn'><i id='info-circle' class="fa fa-info-circle"></i>{{event.name}} on {{event.date}}</p></a> 

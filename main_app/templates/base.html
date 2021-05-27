@@ -43,13 +43,13 @@
 
     <title>Play Dog</title>
     <style>
-        #map { height: 15rem;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }
+        #map { height: 20rem;width:95vw;margin:auto;margin-bottom: .6rem;z-index:0 }
     </style>
 </head>
 <body>
 
     <nav class='nav'>
-        <div id='play-dog'>Play Dog</div>
+        <a href="{% url 'events_index' %}"><div id='play-dog'>Play Dog</div></a>
         <div><a href="{% url 'events_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
     </nav>
     
