@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Dog, Event
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+import json
 
 
 def testmap(request):
@@ -71,13 +72,21 @@ def events_index(request):
 def events_map(request):
 
     events = Event.objects.all()
+    names = []
+    locs = []
     lats = []
     lngs = []
+
     for event in events:
         lats.append(event.lat)
         lngs.append(event.lng)
+        names.append(event.name)
+        locs.append(event.location)
 
-    return render(request, 'events/events_map.html', {'lats': [float(i) for i in lats], 'lngs': [float(i) for i in lngs]})
+    names = json.dumps(names)
+    locs = json.dumps(locs)
+
+    return render(request, 'events/events_map.html', {'names' : names, 'locs' : locs , 'lats': [float(i) for i in lats], 'lngs': [float(i) for i in lngs]})
 
 
 @login_required
