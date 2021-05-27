@@ -320,8 +320,8 @@ body {
   #dog-pic-icon {
     margin-top: 0.8rem;
     border-radius: 50%;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     object-fit: cover;
     display: inline;
     margin-left: auto;
@@ -369,8 +369,9 @@ body {
     display: inline-block;
   }
   .center {
-    text-align: center;
-    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
   #info {

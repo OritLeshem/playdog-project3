@@ -10,61 +10,66 @@
         <p id='age'> {{ event.time }}</p>
         <p id='breed'>{{ event.location }}</p>
         <div id="map"></div>
-
+        <p id='breed'>Details:</p>
         <p id='age'>{{ event.description }}</p>
         <br>
         <hr>
         <br>
-        <p id='age'> Attending:</p> 
+        <p id='age'> Dogs Attending:</p> 
 
         {% if event.attendees.count > 0 %}
-        <p id='age'>Click to Add/Remove Your Dog(s)</p>
+        <p id='age'>Click to Remove Your Dog(s)</p>
 
 
+        <div class='center'>           
         {% for attendee in event.attendees.all %}  
 
         
     {% if user != attendee.user %}
 
-    <div class='center'>           
         <form class="icon" action="{% url 'detail' attendee.id %}" method="post">
             {% csrf_token %}    
             <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
             <p id='breed'>{{ attendee.name}}</p>
         </form>
-    </div> 
+
         {% else %}
-        <div class='center'>           
+          
             <form class="icon" action="{% url 'unassoc_dog' event.id attendee.id %}" method="post">
                 {% csrf_token %}    
                 <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
                 <p id='breed'>{{ attendee.name}}</p>
             </form>
+            {% endif %}
+            
+            {% endfor %}
         </div> 
-    {% endif %}
-
-        {% endfor %}
 
         {% else %}
         <p id='age'>No Play Dogs Currently Attending</p>
         {% endif %}
         {% if my_dogs.count %}
+        <hr>
         
         <p id='age'> My Dogs:</p>
-        <p id='age'>Click to Add/Remove Your Dog(s)</p>
+        {% if dogs_not_attending.count == 0 %}
+        <p id='age'>All Your Dogs Are Attending!</p>
+        {%else%}
+        <p id='age'>Click to Add Your Dog(s)</p>
+        {% endif %}
+        <div class='center'>           
         {% for dog in my_dogs %}
         {% if dog in dogs_not_attending %}
-    <div class='center'>           
             <form class="icon" action="{% url 'assoc_dog' event.id dog.id %}" method="post">
                 {% csrf_token %}    
                 <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ dog.image.url }}"></button>
                 <p id='breed'>{{ dog.name }}</p>
             </form>
-    </div> 
-
-        {% endif %}
-
-                {% endfor %}
+            
+            {% endif %}
+            
+            {% endfor %}
+        </div> 
                 {% else %}
 
         {% endif %}    
@@ -100,7 +105,7 @@ console.log(longitude);
 
 
 
-var mymap = L.map('map').setView([latitude, longitude], 16);
+var mymap = L.map('map').setView([latitude, longitude], 15);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
