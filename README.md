@@ -29,6 +29,7 @@ Contributors:
 Credits: 
 * Logo - Image by OpenClipart-Vectors from Pixabay 
 * Image by Free-Photos from Pixabay 
-* Image by Katrin B. from Pixabay 
+* Image by Katrin B. from Pixabay
+* Image by Péter Göblyös from Pixabay 
 
 
