@@ -5,13 +5,14 @@
 <div><h1 class='form-h1'>{{ event.name}}</h1></div> 
     <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
 
-        <p id='name'> {{ event.name }}</p>
+
         <p id='age'> {{ event.date }}</p>
-        <div id="map"></div>
+        <p id='age'> {{ event.time }}</p>
         <p id='breed'>{{ event.location }}</p>
+        <div id="map"></div>
 
-        <p id='breed'>{{ event.description }}</p>
-
+        <p id='age'>{{ event.description }}</p>
+        <br>
         <hr>
         <br>
         <p id='age'> Attending:</p> 
@@ -29,7 +30,7 @@
         <form class="icon" action="{% url 'detail' attendee.id %}" method="post">
             {% csrf_token %}    
             <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
-            <p id='breed'>{{ attendee.name }}</p>
+            <p id='breed'>{{ attendee.name}}</p>
         </form>
     </div> 
         {% else %}
@@ -37,7 +38,7 @@
             <form class="icon" action="{% url 'unassoc_dog' event.id attendee.id %}" method="post">
                 {% csrf_token %}    
                 <button type="submit" class="btn-add-remove"><img id='dog-pic-icon' src="{{ attendee.image.url }}"></button>
-                <p id='breed'>{{ attendee.name }}</p>
+                <p id='breed'>{{ attendee.name}}</p>
             </form>
         </div> 
     {% endif %}
@@ -99,7 +100,7 @@ console.log(longitude);
 
 
 
-var mymap = L.map('map').setView([latitude, longitude], 13);
+var mymap = L.map('map').setView([latitude, longitude], 16);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,

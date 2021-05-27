@@ -25,22 +25,22 @@ body {
 
   #i-1,
   #txt-1 {
-    color: rgba(131, 129, 129, 0.815);
+    color: rgba(0, 0, 0, 0.815);
   }
 
   #i-2,
   #txt-2 {
-    color: rgba(131, 129, 129, 0.815);
+    color: rgba(0, 0, 0, 0.815);
   }
 
   #i-3,
   #txt-3 {
-    color: rgba(131, 129, 129, 0.815);
+    color: rgba(0, 0, 0, 0.815);
   }
 
   #i-4,
   #txt-4 {
-    color: rgba(131, 129, 129, 0.815);
+    color: rgba(0, 0, 0, 0.815);
   }
 
   div#play-dog {
@@ -216,7 +216,8 @@ body {
     font-family: "Montserrat", sans-serif;
     font-size: 1.1rem;
     color: white;
-    background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
+    background-color: rgb(103, 184, 184);
+
     border-radius: 5px;
   }
 
@@ -250,7 +251,7 @@ body {
     border-radius: 5px;
     border: 1px solid transparent;
     color: white;
-    background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
+    background-color: rgb(103, 184, 184);
   }
   textarea {
     resize: none;
@@ -389,7 +390,6 @@ body {
   }
 
   #logo-lrg {
-    animation: tilt 2s infinite;
     height: 6rem;
     width: 8rem;
   }
@@ -455,5 +455,32 @@ body {
     color: chocolate;
     text-shadow: -1px 2px 0px #00e6e6, -2px 4px 0px #01cccc,
       -3px 6px 0px #00bdbd;
+  }
+
+  #breed-btn {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: rgb(122, 122, 122);
+    margin-bottom: 1rem;
+  }
+
+  #info-circle {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: rgb(103, 184, 184);
+    opacity: 0.7;
+  }
+
+  #mapid {
+    animation: slide 300ms ease-in;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }

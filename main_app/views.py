@@ -25,9 +25,10 @@ def dogs_index(request):
 
 def dogs_detail(request, dog_id):
     dog = Dog.objects.get(id=dog_id)
+    events_attending = dog.event_set.all()
     # events_dog_dosnt_have=Event.objects.exclude(id__in = dog.events.all().values_list('id'))
     # events=Event.objects.all()
-    return render(request, 'dogs/detail.html', {'dog': dog})
+    return render(request, 'dogs/detail.html', {'dog': dog, 'events': events_attending})
 
 
 class DogCreate(LoginRequiredMixin, CreateView):
@@ -55,6 +56,7 @@ def DeleteDog(request, pk):
 class EventCreate(LoginRequiredMixin, CreateView):
     model = Event
     fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -65,16 +67,17 @@ def events_index(request):
     events = Event.objects.all()
     return render(request, 'events/events_index.html', {'events': events})
 
+
 def events_map(request):
 
     events = Event.objects.all()
     lats = []
     lngs = []
     for event in events:
-            lats.append(event.lat)
-            lngs.append(event.lng)
+        lats.append(event.lat)
+        lngs.append(event.lng)
 
-    return render(request, 'events/events_map.html',{'lats' : [float(i) for i in lats], 'lngs' : [float(i) for i in lngs]})
+    return render(request, 'events/events_map.html', {'lats': [float(i) for i in lats], 'lngs': [float(i) for i in lngs]})
 
 
 @login_required

@@ -19,6 +19,19 @@
         <p id='breed'>{{ dog.description }}</p>
 
         <hr>
+
+        {% if events.count %}
+        <p id='age'> {{dog.name}} is attending: </p>
+        {% for event in events %}
+        
+        <a href="{% url 'events_detail' event.id%}"><p id='breed-btn'><i id='info-circle' class="fa fa-info-circle"></i>{{event.name}} on {{event.date}}</p></a> 
+        
+        {% endfor%}
+
+        {%else%}
+        <p id='breed'> {{dog.name}} is attending no events :(</p>
+        {%endif%}
+
         {% if user == dog.user %}
 <div class='btn-contain'>
         <a class='btn' href="{% url 'dogs_update' dog.id %}">Edit</a>

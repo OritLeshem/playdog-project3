@@ -17,14 +17,15 @@
 
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
     <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
-    <div>{% render_field form.lat id='lat' %}</div>
-    <div>{% render_field form.lng id='lng' %}</div>
+
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
     <div>{% render_field form.time class='input' placeholder='Time: HH:MM AM/PM' %}</div> 
     <div id="map"></div>
     <div>{% render_field form.location id='loc' class='input' placeholder='Address' %}</div> 
     <input type="submit" value="Add Event" class="btn">
   </div>
+  <div>{% render_field form.lat id='lat' %}</div>
+  <div>{% render_field form.lng id='lng' %}</div>
   </form>
 
 
@@ -35,23 +36,7 @@
       } );
 
         
-        // latEl.style.visibility = 'hidden';
-        // lngEl.style.display = 'none'
-
-
-
-              
-
-        // var mymap = L.map('mapid').setView([43.653, -79.383], 13);
-        // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        //     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        //     maxZoom: 18,
-        //     id: 'mapbox/streets-v11',
-        //     tileSize: 512,
-        //     zoomOffset: -1,
-        //     accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
-        //     }).addTo(mymap);
-
+ 
 
 // ESRI.LEAFLET/ GEOCODER API, REVERSE GEOCODE SETUP
     let loc = document.getElementById('loc');
@@ -76,8 +61,9 @@
 
     let latEl = document.getElementById('lat');
     let lngEl = document.getElementById('lng');
-    console.log(lngEl.value);
-    console.log(latEl.value);
+    latEl.style.visibility = 'hidden';
+    lngEl.style.display = 'none'
+
 
     // if (lngEl.value !='' && !latEl.value !=''){
       map.on("click", function (e) {
