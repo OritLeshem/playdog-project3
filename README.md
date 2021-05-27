@@ -1,4 +1,4 @@
-# https://playdog-playdate.herokuapp.com/dogs/ 
+# https://playdog-playdate.herokuapp.com 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ VIEW ON HEROKU ^^^^^^^^^^^^^^^^^^^^^^
 
 PLAYDOG is a platform for owners to find/host play dates for thier dogs.\
