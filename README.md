@@ -1,38 +1,28 @@
-PLAYDOG app was invented to help dog's owners to create play dates for thier dogs, and enjoy time togheter.
+# https://playdog-playdate.herokuapp.com/dogs/ 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^ VIEW ON HEROKU ^^^^^^^^^^^^^^^^^^^^^^
+
+PLAYDOG is a platform for owners to find/host play dates for thier dogs.\
+Features include an easy to use map functionality, coupled with a fun and interactive user interface.
 
 
-after registred as a user, you can add dog(s).
-than you be able to see all events near by. You be able to create an event
-or to join one.
-When creating/ Joining an event you can add details such: location, date, hour, discription and more.
-the viewsite is either with a list of events or map marked with all events.
- 
- 
-Screenshot: 
+Built With:
+* Python 3
+* Django 3
+* [Leaflet.js](https://leafletjs.com/)
+* [Esri Leaflet API](https://esri.github.io/esri-leaflet/)
+* Javascript ES6
+* CSS3
+* HTML 5.0
+* Jquery
+* Google Fonts
+* Font-Awesome icons
 
-Technologies Used:
-Psql, Django, Python, Js, CSS, HTML
-We dealt with three tables in our database:  Users, Dogs and Events.
-the app allow the users to see all dogs, all events, and attandence of dogs in each event. create an event or join existing event.
+Contributors:
+* [Matthew Krasucki](https://github.com/mattius9)
+* [Orit Leshem](https://github.com/OritLeshem) 
+* [Ben Shekhtman](https://github.com/uwitdat)
 
-
-Getting Started:
-Heroku link:
-github link: https://github.com/OritLeshem/playdog-project3
-Trello: my trllo: https://trello.com/b/mgDw2nTE/playdog-trello
-
-Next Steps: Add more 
-
-we'll be happy to read your thoughts. 
-
-Thank you very much,
-
-Ben Shekhtman
-Matthew Krasucki 
-Orit Leshem https://github.com/OritLeshem
-
-credit for pictures: 
-Logo - Image by OpenClipart-Vectors from Pixabay 
-
-Image by Free-Photos from Pixabay 
-Image by Katrin B. from Pixabay 
+Credits: 
+* Logo - Image by OpenClipart-Vectors from Pixabay 
+* Image by Free-Photos from Pixabay 
+* Image by Katrin B. from Pixabay 
