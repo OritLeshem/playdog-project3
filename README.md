@@ -2,14 +2,15 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ VIEW ON HEROKU ^^^^^^^^^^^^^^^^^^^^^^
 
 PLAYDOG is a platform for owners to find/host play dates for thier dogs.\
-Features include an easy to use map functionality, coupled with a fun and interactive user interface.
+Features include an easy to use map functionality, coupled with a fun and interactive user interface.\
 
 
 Built With:
 * Python 3
 * Django 3
-* [Leaflet.js](https://leafletjs.com/)
+* [Leaflet.JS](https://leafletjs.com/)
 * [Esri Leaflet API](https://esri.github.io/esri-leaflet/)
+* AWS S3 (Image hosting)
 * Javascript ES6
 * CSS3
 * HTML 5.0
