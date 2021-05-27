@@ -251,7 +251,7 @@ body {
     border-radius: 5px;
     border: 1px solid transparent;
     color: white;
-    background-image: linear-gradient(to right bottom, teal, rgb(2, 139, 139));
+    background-color: rgb(103, 184, 184);
   }
   textarea {
     resize: none;
