@@ -11,7 +11,11 @@
 {% for dog in dogs %}
 <a href="{% url 'detail' dog.id %}"><img id='dog-pic' src="{{ dog.image.url }}"></a>
         <p id='name'> {{ dog.name }}</p>
+        {% if dog.age == 1%}
+        <p id='age'> {{ dog.age }} year old</p>
+        {% else%}
         <p id='age'> {{ dog.age }} years old</p>
+        {% endif %}
         <p id='breed'>{{ dog.breed }}</p>
         
         <hr> 

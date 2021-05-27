@@ -52,7 +52,11 @@
         <hr>
         
         <p id='age'> My Dogs:</p>
+        {% if dogs_not_attending.count == 0 %}
+        <p id='age'>All Your Dogs Are Attending!</p>
+        {%else%}
         <p id='age'>Click to Add Your Dog(s)</p>
+        {% endif %}
         <div class='center'>           
         {% for dog in my_dogs %}
         {% if dog in dogs_not_attending %}
@@ -101,7 +105,7 @@ console.log(longitude);
 
 
 
-var mymap = L.map('map').setView([latitude, longitude], 16);
+var mymap = L.map('map').setView([latitude, longitude], 15);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
