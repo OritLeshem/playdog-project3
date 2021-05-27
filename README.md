@@ -1,8 +1,11 @@
-<img width="530" alt="Screen Shot 2021-05-27 at 3 40 41 PM" src="https://user-images.githubusercontent.com/80868084/119887962-cd4ac000-bf02-11eb-99b7-a0550c93a1fa.png">
-<img width="530" alt="Screen Shot 2021-05-27 at 3 40 08 PM" src="https://user-images.githubusercontent.com/80868084/119887999-d9368200-bf02-11eb-90f0-c6370c4bbdf0.png">
-<img width="530" alt="Screen Shot 2021-05-27 at 3 40 25 PM" src="https://user-images.githubusercontent.com/80868084/119888005-dc317280-bf02-11eb-8c61-ece57a58305b.png">
 # https://playdog-playdate.herokuapp.com 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^ VIEW ON HEROKU ^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^ VIEW ON HEROKU ^^^^^^^^^^^^^^^^^^^^^
+
+<img width="167" alt="Screen Shot 2021-05-27 at 3 40 41 PM" src="https://user-images.githubusercontent.com/80868084/119888514-72659880-bf03-11eb-8d11-0f49a9cd3d0d.png">
+<img width="167" alt="Screen Shot 2021-05-27 at 3 40 08 PM" src="https://user-images.githubusercontent.com/80868084/119888520-742f5c00-bf03-11eb-94ca-7a280ad6c916.png">
+<img width="167" alt="Screen Shot 2021-05-27 at 3 40 25 PM" src="https://user-images.githubusercontent.com/80868084/119888529-75f91f80-bf03-11eb-9067-c464be0abc9f.png">
+
+
 
 PLAYDOG is a mobile platform for owners to find/host play dates for thier dogs.\
 Features include an easy to use map functionality, coupled with a fun and interactive user interface.\
