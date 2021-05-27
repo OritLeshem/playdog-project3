@@ -1,13 +1,10 @@
 from django.db import models
-from django.db.models.fields import CharField
 from django.urls import reverse
-from datetime import date
 from django.contrib.auth.models import User
 import uuid
 
-# for possible use of PointField
-#from django.contrib.gis.db import models
 
+# Generate unique filename for images
 def make_unique_picture_filename(instance, filename):
     return uuid.uuid4().hex[:6] + filename[filename.rfind('.'):]
 
@@ -23,7 +20,6 @@ SIZES = (
     ('L', 'LARGE'),
     ('X', 'EXTRA LARGE')
 )
-
 
 class Dog(models.Model):
     name = models.CharField(max_length=100)

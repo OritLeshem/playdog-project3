@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
-
+    
+    <!-- Leaflet Map Required CSS and Scripts -->
+    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-
     <script src="https://unpkg.com/esri-leaflet@3.0.0/dist/esri-leaflet.js"></script>
     <script src="https://unpkg.com/esri-leaflet-vector@3.0.0/dist/esri-leaflet-vector.js"></script>
-    
-
     <script src="https://unpkg.com/esri-leaflet-geocoder@3.0.0/dist/esri-leaflet-geocoder.js"></script>
 
+    <!-- Fonts -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -28,18 +28,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    
+    <!-- JQuery -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    
     <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/>
-    
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-
-  
 
     <title>Play Dog</title>
     <style>
@@ -53,12 +48,11 @@
         <div><a href="{% url 'events_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
     </nav>
     
-
-
     <main class='container'>
         {% block content %}
         {% endblock %}
-    </main> 
+    </main>
+
     {% if user.is_authenticated %}
     <footer class='flex-foot'>
         <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
@@ -67,30 +61,25 @@
         <div><a id='i-4' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
     </footer> 
     <footer class='flex-foot-text'>
-        <div id='txt-1'>Home</div>     
+        <div id='txt-1'>Events</div>     
         <div id='txt-2'>Logout</div>
         <div id='txt-3'>Dogs</div>
         <div id='txt-4'>New Dog</div>
     </footer>
-        {%else%}   
-        <footer class='flex-foot'>
-            <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
-            <div><a id='i-2' href="{% url 'login' %}"><i class="fa fa-sign-in"></i></a></div>
-            <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
-            <div><a id='i-4' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
-        </footer> 
-        <footer class='flex-foot-text'>
-            <div id='txt-1'>Home</div>     
-            <div id='txt-2'>Login</div>
-            <div id='txt-3'>Dogs</div>
-            <div id='txt-4'>New Dog</div>
-        </footer>
-        {%endif%}     
+    {%else%}   
+    <footer class='flex-foot'>
+        <div><a id='i-1' href="{% url 'events_index' %}"><i class="fa fa-home"></i></a></div>
+        <div><a id='i-2' href="{% url 'login' %}"><i class="fa fa-sign-in"></i></a></div>
+        <div><a id='i-3' href="{% url 'dogs_index' %}"><i class="fa fa-paw"></i></a></div>
+        <div><a id='i-4' href="{% url 'dogs_create' %}"><i class="fa fa-plus-square-o"></i></a></div>
+    </footer> 
+    <footer class='flex-foot-text'>
+        <div id='txt-1'>Home</div>     
+        <div id='txt-2'>Login</div>
+        <div id='txt-3'>Dogs</div>
+        <div id='txt-4'>New Dog</div>
+    </footer>
+    {%endif%}     
  
-
-    <!--JS FOR FOOTER BTN COLOR CHANGES-->
-
-
-
 </body>
 </html>

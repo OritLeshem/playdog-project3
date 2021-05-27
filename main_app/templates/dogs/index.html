@@ -2,28 +2,25 @@
 {% block content%}
 {% load static %}
 
+<!-- Dog Index -->
 <div class='form-field'>
-<div><h1 class='form-h1'>Play Dogs</h1></div> 
-<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+        <div><h1 class='form-h1'>Play Dogs</h1></div> 
+        <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
 
-
-
-{% for dog in dogs %}
-<a href="{% url 'detail' dog.id %}"><img id='dog-pic' src="{{ dog.image.url }}"></a>
+        {% for dog in dogs %}
+        <a href="{% url 'detail' dog.id %}"><img id='dog-pic' src="{{ dog.image.url }}"></a>
         <p id='name'> {{ dog.name }}</p>
-        {% if dog.age == 1%}
-        <p id='age'> {{ dog.age }} year old</p>
-        {% else%}
-        <p id='age'> {{ dog.age }} years old</p>
-        {% endif %}
+                {% if dog.age == 1%}
+                <p id='age'> {{ dog.age }} year old</p>
+                {% else%}
+                <p id='age'> {{ dog.age }} years old</p>
+                {% endif %}
         <p id='breed'>{{ dog.breed }}</p>
-        
+        <p id='breed'>Owner: {{dog.user}}</p>
         <hr> 
-{% endfor %}
-<br>
-
+        {% endfor %}
+        <br>
 </div>
-
 
 {% endblock %}
 

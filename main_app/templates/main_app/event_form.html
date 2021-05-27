@@ -3,103 +3,84 @@
 {% load static %}
 {% load widget_tweaks %}
 
+<!-- Event Create/Update Form -->
 
 <div class='form-field'>
-{% if object %}
-<div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
-<div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
-    {% else %}
+  {% if object %}
+  <div><h1 class='form-h1'>Edit {{object.name}}</h1></div>
+  <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
+  {% else %}
   <div><h1 class='form-h1'>Create Event</h1></div> 
   <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
-    {% endif %}
+  {% endif %}
   <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-
     <div>{% render_field form.name class='input' placeholder='Name' %}</div> 
     <div>{% render_field form.description rows='4' class='input' placeholder='Description' %}</div> 
-
     <div id="myCalendarWrapper">{% render_field form.date id='datepicker' class='input' placeholder='Date' %}</div> 
     <div>{% render_field form.time class='input' placeholder='Time: HH:MM AM/PM' %}</div> 
     <div id="map"></div>
     <div>{% render_field form.location id='loc' class='input' placeholder='Address' %}</div> 
     <input type="submit" value="Add Event" class="btn">
-  </div>
-  <div>{% render_field form.lat id='lat' %}</div>
-  <div>{% render_field form.lng id='lng' %}</div>
+    <div>{% render_field form.lat id='lat' %}</div>
+    <div>{% render_field form.lng id='lng' %}</div>
   </form>
-
+</div>
 
 <script>
-//JQUERY CALENDER
+
+    //JQUERY CALENDER
     $( function() {
       $( "#datepicker" ).datepicker();
       } );
 
-        
- 
-
-// ESRI.LEAFLET/ GEOCODER API, REVERSE GEOCODE SETUP
+  // ESRI.LEAFLET/ GEOCODER API, REVERSE GEOCODE SETUP
     let loc = document.getElementById('loc');
-
     const apiKey = "AAPK96607c5decf14fdb8e94886eef0abdbfBvOC--hJuzxdz-8dyLVkGuOmApTIY5UYJM5BhgeZtz9wopDLmkbBPQ0AH6cE8i0E";
     const basemapEnum = "ArcGIS:Navigation";
-
+    
     const map = L.map('map', {
       minZoom: 2
     }).setView([43.653, -79.383], 13);
-
+    
     L.esri.Vector.vectorBasemapLayer(basemapEnum, {
       apiKey: apiKey
     }).addTo(map);
 
-       const geocoder = L.esri.Geocoding.geocodeService({
+    const geocoder = L.esri.Geocoding.geocodeService({
       apikey: apiKey
     });
 
-
     const layerGroup = L.layerGroup().addTo(map);
-
     let latEl = document.getElementById('lat');
     let lngEl = document.getElementById('lng');
     latEl.style.visibility = 'hidden';
     lngEl.style.display = 'none'
 
+    console.log(typeof latEl.value);
+    console.log(typeof lngEl.value);
 
-    // if (lngEl.value !='' && !latEl.value !=''){
-      map.on("click", function (e) {
-        geocoder.reverse().latlng(e.latlng).run(function (error, result) {
-          if (error) {
-            return;
-          }
+    var latitude = parseFloat(latEl.value);
+    var longitude = parseFloat(lngEl.value);
+    
+    // Adding pin on click
 
-          const lngLatString = `${Math.round(result.latlng.lng * 100000)/100000}, ${Math.round(result.latlng.lat * 100000)/100000}`;
+    map.on("click", function (e) {
+      geocoder.reverse().latlng(e.latlng).run(function (error, result) {
+        if (error) {
+          return;
+        }
+      const lngLatString = `${Math.round(result.latlng.lng * 100000)/100000}, ${Math.round(result.latlng.lat * 100000)/100000}`;
+      layerGroup.clearLayers();
+      marker = L.marker(result.latlng)
+      .addTo(layerGroup)
+      .bindPopup(`<p>${result.address.Match_addr}</p>`)
 
-          layerGroup.clearLayers();
-          marker = L.marker(result.latlng)
-          .addTo(layerGroup)
-          .bindPopup(`<p>${result.address.Match_addr}</p>`)
-
-          console.log(result.address.Match_addr)
-
-          loc.value = result.address.Match_addr
-          console.log(typeof e.latlng.lat);
-          console.log(typeof e.latlng.lng);
-
-          latEl.value=e.latlng.lat.toFixed(6);
-          lngEl.value=e.latlng.lng.toFixed(6);
-          console.log(latEl.value);
-          console.log(lngEl.value);
-
-        });
+      loc.value = result.address.Match_addr
+      latEl.value=e.latlng.lat.toFixed(6);
+      lngEl.value=e.latlng.lng.toFixed(6);
       });
-    // }
-
-    // else {
-    //   const marker = L.marker([longitude, latitude]).addTo(map)
-    // }
-
-    
-    
-  </script>
+    });  
+</script>
 
   {% endblock %}

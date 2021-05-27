@@ -2,46 +2,33 @@
 {% block content%}
 {% load static %}
 
+<!-- Dog Detail -->
+
 <div><h1 class='form-h1'>Meet {{ dog.name}}</h1></div> 
 <div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div>
-
-<img id='dog-pic-lrg' src="{{ dog.image.url }}"></a>
+<img id='dog-pic-lrg' src="{{ dog.image.url }}">
 <p id='name'> {{ dog.name }}</p>
 <p id='age'> {{ dog.age }} years old</p>
 <p id='breed'>{{ dog.breed }}</p>
+<p id='age'> size {{ dog.size }} </p>
+<p id='breed'> gender {{ dog.gender }}</p>
+<p id='breed'>{{ dog.description }}</p>
+<hr>
 
-
-
-        <p id='age'> size {{ dog.size }} </p>
-        <p id='breed'> gender {{ dog.gender }}</p>
-
-
-        <p id='breed'>{{ dog.description }}</p>
-
-        <hr>
-
-        {% if events.count %}
-        <p id='age'> {{dog.name}} is attending: </p>
+{% if events.count %}
+<p id='age'> {{dog.name}} is attending: </p>
         {% for event in events %}
-        
         <a href="{% url 'events_detail' event.id%}"><p id='breed-btn'><i id='info-circle' class="fa fa-info-circle"></i>{{event.name}} on {{event.date}}</p></a> 
-        
         {% endfor%}
+{%else%}
+<p id='breed'> {{dog.name}} is attending no events :(</p>
+{%endif%}
 
-        {%else%}
-        <p id='breed'> {{dog.name}} is attending no events :(</p>
-        {%endif%}
-
-        {% if user == dog.user %}
+{% if user == dog.user %}
 <div class='btn-contain'>
         <a class='btn' href="{% url 'dogs_update' dog.id %}">Edit</a>
         <a class='btn' href="{% url 'dogs_delete' dog.id %}">Delete</a>       
 </div>      
-      {% endif %}
- 
- 
-  
- <!-- have events:  -->
-
+{% endif %}
 
 {% endblock %}

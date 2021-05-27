@@ -2,65 +2,20 @@
 {% block content %}
 {% load static %}
 
-<style>
-        #mapid { height: 10rem;width:50vw;margin:auto;margin-bottom: .6rem;z-index:0 }
-</style>
+<!-- Event Index  -->
+
 <div class='form-field'>
         <div><h1 class='form-h1'>Play Dog Events</h1></div> 
-
-   <a href="{% url 'events_map' %}"><div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div></a>
+        <a href="{% url 'events_map' %}"><div class='img-div'><img id='logo' src="{% static 'img/logo.png' %}"></div></a>
         <hr>
-{% for event in events %}
-
+        {% for event in events %}
         <p id='name'> {{ event.name }}</p> 
         <p id='age'> {{ event.date}} </p>
         <p id='age'>{{ event.time}}</p>
         <p id='breed'>{{ event.location}}</p>
-
         <p id='age'>Hosted by {{event.user}}</p>
-
-
         <p id='age'><a href="{% url 'events_detail' event.id %}"><i id='info' class="fa fa-info-circle"></i></a></p> 
         <hr>
-{% endfor %}
+        {% endfor %}
 </div>
-
-<script>
-
-
-
-        $( function() {
-          $( "#datepicker" ).datepicker();
-          } );
-
-    let latitude;
-    let longitude;
-
-    let latEl = document.getElementById('lat');
-    let lngEl= document.getElementById('lng');
-
-    lngEl.style.visibility = 'hidden';
-    latEl.style.visibility = 'hidden';
-
-    
-    latitude = parseFloat(latEl.innerHTML);
-    longitude = parseFloat(lngEl.innerHTML);
-
-    var mymap = L.map('mapid').setView([latitude, longitude], 16);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
-        }).addTo(mymap);
-
-    var eventMarker;
-    eventMarker = L.marker([latitude, longitude]).addTo(mymap)
-
-
-
-
-</script>
 {% endblock %}
