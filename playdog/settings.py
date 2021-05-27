@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.getenv('PROD'):
     DEBUG = False
     SECRET_KEY = os.getenv('SECRET_KEY')
-    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'django.core.files.storage.FileSystemStorage'
     AWS_S3_ENDPOINT_URL=os.getenv('AWS_S3_ENDPOINT_URL')
