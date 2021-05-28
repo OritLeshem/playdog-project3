@@ -23,13 +23,14 @@
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoidXdpdGRhdCIsImEiOiJja3AzMTQ3eWYwMnJ3Mm5wdGg2a3M1dmhsIn0.BqTd3qhSHwmC6UMyiHFczw'
+        accessToken: "{{api_key}}" //{{MAP_BOX_TOKEN | safe}}
         }).addTo(mymap);
     let eventMarker;
     for(i = 0; i < lats.length; i++){
         eventMarker = L.marker([lats[i], lngs[i]]).addTo(mymap)
         .bindPopup(`${names[i]} at ${locs[i]}`)
         .openPopup()
+
     }
  </script>
 

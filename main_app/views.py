@@ -6,6 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 import json
+import os
+from dotenv import load_dotenv
+
+map_key = os.getenv('MAP_BOX_KEY')
+arcgis_key = os.getenv('ARCGIS_KEY')
 
 
 def testmap(request):
@@ -74,11 +79,21 @@ class EventCreate(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     success_url = '/events/'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['api_key'] = arcgis_key
+        return context
+
 
 class EventUpdate(LoginRequiredMixin, UpdateView):
     model = Event
     fields = ['name', 'description', 'date', 'location', 'lat', 'lng', 'time']
     success_url = '/events/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['api_key'] = arcgis_key
+        return context
 
 
 def events_index(request):
@@ -87,7 +102,6 @@ def events_index(request):
 
 
 def events_map(request):
-
     events = Event.objects.all()
     names = []
     locs = []
@@ -103,7 +117,7 @@ def events_map(request):
     names = json.dumps(names)
     locs = json.dumps(locs)
 
-    return render(request, 'events/events_map.html', {'names' : names, 'locs' : locs , 'lats': [float(i) for i in lats], 'lngs': [float(i) for i in lngs]})
+    return render(request, 'events/events_map.html', {'names' : names, 'locs' : locs , 'lats': [float(i) for i in lats], 'lngs': [float(i) for i in lngs], 'api_key' : map_key })
 
 
 @login_required
@@ -115,7 +129,8 @@ def events_detail(request, event_id):
     return render(request, 'events/events_detail.html', {
         'event': event,
         'my_dogs': my_dogs,
-        'dogs_not_attending': dogs_not_attending
+        'dogs_not_attending': dogs_not_attending,
+        'api_key' : map_key
     })
 
 

@@ -37,6 +37,7 @@ Future Features:
 * Add notifications for users to see which dogs are attending their events
 * Expand Dog Details to implement social interactions ie: comments, likes
 * Modify breed selection to include drop-down of presets
+* Navigate to details page by clicking event pin on event map
 
 
 Credits: 
