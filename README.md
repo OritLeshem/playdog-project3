@@ -4,9 +4,12 @@
 
 
 
-PLAYDOG is a mobile platform for owners to find/host play dates for thier dogs.\
+PLAYDOG is a mobile platform for owners to find/host play dates for their dogs.\
 Features include an easy to use map functionality, coupled with a fun and interactive user interface.
 
+View the Play Dogs       |  Create Events    |     Join Events
+:-------------------------:|:-------------------------:|:-------------------------:
+![Play Dogs](https://i.imgur.com/APVa3YD.png) |  ![Create](https://i.imgur.com/cXRyJMs.png) | ![Join](https://i.imgur.com/AKIkwcz.png)
 
 Built With:
 * Python 3
