@@ -29,6 +29,16 @@ Contributors:
 * [Orit Leshem](https://github.com/OritLeshem) 
 * [Ben Shekhtman](https://github.com/uwitdat)
 
+Future Features:
+* Be able to use the location of a user to display the map according to their region
+* Allow user to update their profile, change their password
+* Add more business functionality to the time and date of the event
+* Add more details to events ie: end time
+* Add notifications for users to see which dogs are attending their events
+* Expand Dog Details to implement social interactions ie: comments, likes
+* Modify breed selection to include drop-down of presets
+
+
 Credits: 
 * Logo - Image by OpenClipart-Vectors from Pixabay 
 * Image by Free-Photos from Pixabay 
